@@ -4,6 +4,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "start": "lerna run build:client --parallel"
+  },
   "dependencies": {},
   "devDependencies": {
     "lerna": "^8.1.2"
