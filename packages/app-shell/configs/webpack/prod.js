@@ -3,10 +3,8 @@ const { merge } = require("webpack-merge");
 const { resolve } = require("path");
 const { ModuleFederationPlugin } = require("webpack").container;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const dependencies = require('@kspr-dev/dependencies');
+const common = require('@kspr-dev/dependencies');
 const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
-
-console.log(dependencies);
 
 const commonConfig = require("./common");
 
@@ -22,20 +20,23 @@ module.exports = merge(commonConfig, {
     new ModuleFederationPlugin({
       name: "kspr_dev_shell",
       remotes: {
-        //kspr_dev_articles: "kspr_dev_articles@[kspr_dev_articlesUrl]/remoteEntry.js",
+        kspr_dev_articles: "kspr_dev_articles@[kspr_dev_articlesUrl]/remoteEntry.js",
       },
       shared: {
-        react: {singleton: true, requiredVersion: dependencies.dependencies['react']}, 
+        react: {
+          singleton: true, 
+          requiredVersion: common.dependencies['react']
+        }, 
         "react-dom": {
           singleton: true,
-          requiredVersion: dependencies.dependencies['react-dom']
+          requiredVersion: common.dependencies['react-dom']
         },
         "react-dom/client": {
           singleton: true,
-          requiredVersion: dependencies.dependencies['react-dom']
+          requiredVersion: common.dependencies['react-dom']
         },
-        "react-router": {singleton: true, requiredVersion: dependencies.dependencies['react-router']},
-        "react-router-dom": {singleton: true, requiredVersion: dependencies.dependencies['react-router-dom']}
+        "react-router": {singleton: true, requiredVersion: common.dependencies['react-router']},
+        "react-router-dom": {singleton: true, requiredVersion: common.dependencies['react-router-dom']}
       }
     }),
     new HtmlWebpackPlugin({ 

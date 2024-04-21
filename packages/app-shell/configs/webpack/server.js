@@ -29,7 +29,9 @@ module.exports = merge(commonConfig, {
     new UniversalFederationPlugin({
       name: "kspr_dev_shell",
       isServer: true,
-      remotes: {},
+      remotes: {
+        kspr_dev_articles: "kspr_dev_articles@http://localhost:3014/remoteEntry.js",
+      },
       shared: {
         react: {singleton: true, requiredVersion: dependencies.dependencies['react']}, 
         "react-dom": {

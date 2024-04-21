@@ -1,0 +1,18 @@
+{
+  "presets": [
+    "@babel/env",
+    [
+      "@babel/preset-react", 
+      {
+        "runtime": "automatic"
+      }
+    ],
+    "@babel/preset-typescript",
+    [
+      "@emotion/babel-preset-css-prop",
+      {
+        "sourceMap": false
+      }
+    ]
+  ]
+}

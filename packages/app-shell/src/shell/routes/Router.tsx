@@ -1,5 +1,6 @@
-import { Route, Routes } from "react-router-dom";
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+const Articles = React.lazy(() => import("kspr_dev_articles/Articles"));
 
 export const Router = () => {
   return (
@@ -11,6 +12,7 @@ export const Router = () => {
             <>
               <div>
                 Hello!
+                <Articles />
               </div>
             </>
           }

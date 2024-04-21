@@ -1,24 +1,24 @@
 {
-  "name": "@kspr-dev/app-shell",
-  "version": "0.1.0",
-  "description": "kspr.dev app shell",
-  "author": "Kasper Moskwiak",
-  "scripts": {
-    "build:client": "webpack --config=configs/webpack/prod.js",
-    "build:server": "webpack --config=configs/webpack/server.js",
-    "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
-    "start": "npm run watch",
-    "start:server": "node ./dist-server/js/server.js",
-    "start:prod": "npm run build && node express.js",
-    "test": "jest --coverage --watchAll --config=configs/jest.json",
-    "watch": "nodemon --watch ./src --exec \"npm run build:client && npm run build:server && npm run start:server\""
-  },
-  "dependencies": {
-    "@kspr-dev/dependencies": "*"
-  },
-  "devDependencies": {
-    "express": "^4.19.2",
-    "morgan": "^1.10.0",
-    "react-helmet": "^6.1.0"
-  }
+    "name": "@kspr-dev/app-shell",
+    "version": "0.1.0",
+    "description": "kspr.dev app shell",
+    "author": "Kasper Moskwiak",
+    "scripts": {
+        "build:client": "webpack --config=configs/webpack/prod.js",
+        "build:server": "webpack --config=configs/webpack/server.js",
+        "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
+        "start": "npm run watch",
+        "start:server": "node ./dist-server/js/server.js",
+        "start:prod": "npm run build && node express.js",
+        "test": "jest --coverage --watchAll --config=configs/jest.json",
+        "watch": "nodemon --watch ./src --exec \"npm run build:client && npm run build:server && npm run start:server\""
+    },
+    "dependencies": {
+        "@kspr-dev/dependencies": "*"
+    },
+    "devDependencies": {
+        "express": "^4.19.2",
+        "morgan": "^1.10.0",
+        "react-helmet": "^6.1.0"
+    }
 }
