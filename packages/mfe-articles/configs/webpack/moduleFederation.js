@@ -1,6 +1,6 @@
 const { ModuleFederationPlugin } = require("webpack").container;
 const { NodeFederationPlugin, StreamingTargetPlugin } = require("@module-federation/node");
-const common = require('@kspr-dev/dependencies');
+const common = require('@kspr-dev/common');
 
 const shared = {
     react: {

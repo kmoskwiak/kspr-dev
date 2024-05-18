@@ -1,5 +1,5 @@
 {
-  "name": "@kspr-dev/dependencies",
+  "name": "@kspr-dev/common",
   "version": "0.1.0",
   "description": "kspr.dev shared dependencies",
   "author": "Kasper Moskwiak",

@@ -1,11 +1,8 @@
-// shared config (dev and prod)
-const { resolve } = require("path");
-
-module.exports = {
+module.exports = (context) => ({
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
-  context: resolve(__dirname, "../../"),
+  context: context,
   module: {
     rules: [
       {
@@ -30,4 +27,4 @@ module.exports = {
       },
     ],
   }
-};
+});

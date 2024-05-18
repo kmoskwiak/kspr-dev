@@ -3,7 +3,7 @@ const { merge } = require("webpack-merge");
 const { resolve } = require("path");
 const CopyPlugin = require('copy-webpack-plugin');
 const commonConfig = require("./common");
-const dependencies = require('@kspr-dev/dependencies');
+const common = require('@kspr-dev/common');
 const { UniversalFederationPlugin } = require("@module-federation/node");
 const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 
@@ -33,17 +33,17 @@ module.exports = merge(commonConfig, {
         kspr_dev_articles: "kspr_dev_articles@http://localhost:3014/remoteEntry.js",
       },
       shared: {
-        react: {singleton: true, requiredVersion: dependencies.dependencies['react']}, 
+        react: {singleton: true, requiredVersion: common.dependencies['react']}, 
         "react-dom": {
           singleton: true,
-          requiredVersion: dependencies.dependencies['react-dom']
+          requiredVersion: common.dependencies['react-dom']
         },
         "react-dom/client": {
           singleton: true,
-          requiredVersion: dependencies.dependencies['react-dom']
+          requiredVersion: common.dependencies['react-dom']
         },
-        "react-router": {singleton: true, requiredVersion: dependencies.dependencies['react-router']},
-        "react-router-dom": {singleton: true, requiredVersion: dependencies.dependencies['react-router-dom']}
+        "react-router": {singleton: true, requiredVersion: common.dependencies['react-router']},
+        "react-router-dom": {singleton: true, requiredVersion: common.dependencies['react-router-dom']}
       }
     }),
     new ExternalTemplateRemotesPlugin(),

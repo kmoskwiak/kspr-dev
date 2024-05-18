@@ -17,6 +17,6 @@
     },
     "devDependencies": {},
     "dependencies": {
-        "@kspr-dev/dependencies": "*"
+        "@kspr-dev/common": "*"
     }
 }
