@@ -21,6 +21,7 @@ module.exports = merge(commonConfig, {
       name: "kspr_dev_shell",
       remotes: {
         kspr_dev_articles: "kspr_dev_articles@[kspr_dev_articlesUrl]/remoteEntry.js",
+        kspr_dev_header: "kspr_dev_header@[kspr_dev_headerUrl]/remoteEntry.js",
       },
       shared: {
         react: {
