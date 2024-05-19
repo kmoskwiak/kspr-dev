@@ -1,30 +1,64 @@
-module.exports = (context) => ({
-  resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx"],
-  },
-  context: context,
-  module: {
-    rules: [
-      {
-        test: [/\.jsx?$/, /\.tsx?$/],
-        use: ["babel-loader"],
-      },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
-      {
-        test: /\.(webm)$/i,
-        use: [
-          "file-loader?hash=sha512&digest=hex&name=img/[contenthash].[ext]",
-        ],
-      },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        use: [
-          "file-loader?hash=sha512&digest=hex&name=img/[contenthash].[ext]",
-        ],
-      },
-    ],
-  }
+const { merge } = require("webpack-merge");
+const { resolve } = require("path");
+const moduleFederationConfig = require('./moduleFederation');
+const commonConfig = require("./common");
+
+module.exports = ({
+    mode,
+    context,
+    /**
+     * @property {string} envType - The type of the configuration. Either "client" or "server".
+     */
+    envType,
+    devPort,
+    moduleName,
+    moduleExposes,
+}) => merge(commonConfig, {
+  mode,
+  context,
+  name: envType,
+  entry: `./src/entry.${envType}.tsx`,
+
+  /**
+   * Server specific configurations
+   */
+  ...(envType === "server" && {
+    target: "node",
+  }),
+
+  /**
+   * Client specific configurations
+   */
+  ...(envType === "client" && {
+  }),
+
+  /**
+   * Development specific configurations
+   */
+  ...(mode === "development" && {
+    devServer: {
+      hot: true,
+      historyApiFallback: true,
+      port: devPort,
+    },
+    devtool: "cheap-module-source-map",
+  }),
+
+   /**
+   * Production specific configurations
+   */
+  ...(mode === "production" && {
+    devtool: "source-map",
+    output: {
+      filename: "bundle.[contenthash].min.js",
+      path: resolve(__dirname, "../../dist/", envType),
+      publicPath: "/",
+    },
+  }),
+  plugins: [
+    ...moduleFederationConfig({
+        name: moduleName,
+        exposes: moduleExposes,
+      })[envType],
+  ],
 });

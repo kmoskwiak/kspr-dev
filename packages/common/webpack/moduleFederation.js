@@ -46,6 +46,9 @@ module.exports =  ({
     const clientExposes = buildExposeMap(exposes, 'client');
     const serverExposes = buildExposeMap(exposes, 'server');
 
+    console.log(name, clientExposes);
+    console.log(name, serverExposes);
+
     return {
         client: [
             new ModuleFederationPlugin({

@@ -1,20 +1,13 @@
-// production config
-const { merge } = require("webpack-merge");
 const { resolve } = require("path");
-const moduleFederationConfig = require('./moduleFederation');
+const webpackConfig = require('@kspr-dev/common/webpack/config')
 
-const commonConfig = require("./common");
 
-module.exports = merge(commonConfig, {
+module.exports = webpackConfig({
   mode: "production",
-  entry: "./src/entry.tsx",
-  output: {
-    filename: "bundle.[contenthash].min.js",
-    path: resolve(__dirname, "../../dist/client"),
-    publicPath: "/",
+  context: resolve(__dirname, "../../"),
+  envType: "client",
+  moduleName: "kspr_dev_articles",
+  moduleExposes: {
+    './Articles': './src/Articles',
   },
-  devtool: "source-map",
-  plugins: [
-    ...moduleFederationConfig.client,
-  ],
 });

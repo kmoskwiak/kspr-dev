@@ -1,20 +1,14 @@
-// development config
-const { merge } = require("webpack-merge");
-const commonConfig = require("./common");
-const moduleFederationConfig = require('./moduleFederation');
 const { resolve } = require("path");
+const webpackConfig = require('@kspr-dev/common/webpack/config')
 
-module.exports = merge(commonConfig, {
-  entry: "./src/entry.tsx",
-  mode: "development",
-  devServer: {
-    hot: true,
-    historyApiFallback: true,
-    port: 3013
-  },
-  devtool: "cheap-module-source-map",
-  name: "client",
-  plugins: [
-    ...moduleFederationConfig.client,
-  ],
+
+module.exports = webpackConfig({
+    mode: "development",
+    context: resolve(__dirname, "../../"),
+    envType: "client",
+    devPort: 3013,
+    moduleName: "kspr_dev_articles",
+    moduleExposes: {
+      './Articles': './src/Articles',
+    },
 });
