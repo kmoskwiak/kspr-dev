@@ -9,7 +9,7 @@ const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 const commonConfig = require("./common");
 
 module.exports = merge(commonConfig, {
-  mode: "development",
+  mode: "production",
   output: {
     filename: "js/bundle.[contenthash].min.js",
     path: resolve(__dirname, "../../dist"),

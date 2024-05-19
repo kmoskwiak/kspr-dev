@@ -4,14 +4,21 @@
     [
       "@babel/preset-react", 
       {
-        "runtime": "automatic"
+        "runtime": "automatic",
+        "importSource": "@emotion/react"
       }
     ],
-    "@babel/preset-typescript",
+    "@babel/preset-typescript"
+  ], 
+  "plugins": [
     [
-      "@emotion/babel-preset-css-prop",
+      "@emotion",
       {
-        "sourceMap": false
+        // sourceMap is on by default but source maps are dead code eliminated in production
+        "sourceMap": true,
+        "autoLabel": "dev-only",
+        "labelFormat": "[local]",
+        "cssPropOptimization": true
       }
     ]
   ]

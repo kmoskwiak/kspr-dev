@@ -6,7 +6,6 @@ import { Helmet } from "react-helmet";
 import morgan from "morgan";
 import { Router } from "./shell/routes/Router";
 import { renderToPipeableStream } from "react-dom/server";
-import * as React from "react";
 
 process.on("unhandledRejection", function (err, promise) {
   console.error(
@@ -20,6 +19,8 @@ process.on("unhandledRejection", function (err, promise) {
 
 console.log(__dirname);
 console.log(path.resolve(__dirname, "../../dist/index.html"));
+
+
 
 const pageRaw = fs.readFileSync(
   path.resolve(__dirname, "../../dist/index.html"),
@@ -35,15 +36,18 @@ app.use("/static", express.static(path.resolve(__dirname, "../../dist")));
 app.use(morgan("combined"));
 
 app.use("/", async (req, res, next) => {
+
   if (!["/", "/articles", "/projects", "/loading"].includes(req.path)) {
     return next();
   }
+
+
 
   let didError = false;
 
   const stream = renderToPipeableStream(
     <StaticRouter location={req.url}>
-      <Router />
+        <Router />
     </StaticRouter>,
     {
       onAllReady() {
@@ -53,6 +57,7 @@ app.use("/", async (req, res, next) => {
         const helmet = Helmet.renderStatic();
         res.write(helmet.title.toString());
         res.write(helmet.meta.toString());
+        res.write
         res.write(parts[1]);
 
         stream.pipe(res);

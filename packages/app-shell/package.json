@@ -14,6 +14,7 @@
         "watch": "nodemon --watch ./src --exec \"npm run build:client && npm run build:server && npm run start:server\""
     },
     "dependencies": {
+        "@emotion/server": "^11.11.0",
         "@kspr-dev/common": "*"
     },
     "devDependencies": {
