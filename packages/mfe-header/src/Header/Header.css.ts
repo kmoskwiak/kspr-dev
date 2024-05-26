@@ -5,6 +5,7 @@ export const headerContainer = css`
   margin: 0 auto;
   max-width: 1100px;
   position: relative;
+  border: 1px solid ${theme.one};
 
   display: grid;
   grid-template-columns: 1fr;
