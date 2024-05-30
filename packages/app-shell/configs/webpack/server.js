@@ -3,7 +3,7 @@ const { merge } = require("webpack-merge");
 const { resolve } = require("path");
 const CopyPlugin = require('copy-webpack-plugin');
 const commonConfig = require("./common");
-const common = require('@kspr-dev/common');
+const common = require('@kspr-dev/common/dependencies');
 const { UniversalFederationPlugin } = require("@module-federation/node");
 const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 

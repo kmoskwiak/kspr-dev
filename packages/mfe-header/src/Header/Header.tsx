@@ -1,17 +1,26 @@
-import { Menu } from "../Menu";
-import { headerContainer, headerStyles } from "./Header.css";
+import { HeadBar } from "@kspr-dev/common/components/HeadBar";
+import { Menu } from "@kspr-dev/common/components/Menu";
+import { Container } from "@kspr-dev/common/components/Container";
 
 export const Header = () => {
   return (
-    <div css={headerContainer}>
-      <div css={headerStyles}>
-        <div className="hello">Hello,</div>
-        <div className="name">I’m Kasper</div>
-        <div className="job">a software engineer.</div>
-      </div>
-      <div className="menu">
-        <Menu />
-      </div>
-    </div>
+    <Container marginTop="3rem">
+      <HeadBar>
+        <Menu links={[
+          {
+            title: 'Home',
+            url: '/',
+          },
+          {
+            title: 'About',
+            url: '/about',
+          },
+          {
+            title: 'Contact',
+            url: '/contact',
+          },
+        ]} />
+      </HeadBar>
+    </Container>
   );
 };

@@ -3,7 +3,17 @@
   "version": "0.1.0",
   "description": "kspr.dev shared dependencies",
   "author": "Kasper Moskwiak",
-  "main": "index.js",
+  "type": "commonjs",
+  "exports":{
+    ".": "./src/index.ts",
+    "./components/*": "./src/components/index.ts",
+    "./dependencies": "./index.js",
+    "./theme": "./src/theme/index.ts",
+    "./webpack/common": "./webpack/common.js",
+    "./webpack/config": "./webpack/config.js",
+    "./webpack/moduleFederation": "./webpack/moduleFederation.js" 
+  },
+  "types": "./src/**/*",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "react": "^18.2.0",

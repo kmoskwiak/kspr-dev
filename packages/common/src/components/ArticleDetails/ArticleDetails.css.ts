@@ -27,10 +27,9 @@ export const styles = css`
   .description {
       padding: 1rem 0px 0 0;
       margin-bottom: 20px;
-      font-size: 0.9rem;
-      line-height: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.8rem;
     }
-
 
     .meta {
       display: flex;

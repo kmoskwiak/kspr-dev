@@ -2,13 +2,15 @@
   "compilerOptions": {
     "noEmit": true,
     "rootDir": ".",
+    "baseUrl": ".",
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
+    "allowImportingTsExtensions": true,
     "outDir": "dist",
-    "target": "ESNext",
+    "target": "ES6",
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
