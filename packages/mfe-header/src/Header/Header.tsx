@@ -12,12 +12,12 @@ export const Header = () => {
             url: '/',
           },
           {
-            title: 'About',
-            url: '/about',
+            title: 'Articles',
+            url: '/articles',
           },
           {
-            title: 'Contact',
-            url: '/contact',
+            title: 'Projects',
+            url: '/projects',
           },
         ]} />
       </HeadBar>

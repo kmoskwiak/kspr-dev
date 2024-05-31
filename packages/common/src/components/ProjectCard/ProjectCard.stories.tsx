@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
 import { ProjectCard } from './ProjectCard';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -26,9 +25,8 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Basic: Story = {
   args: {
-    children: <div style={{ color: '#eee' }}>Hello World</div>,
     name: 'muchconf',
-    id: '01',
+    projectId: '01',
     description: 'Wow! So much configuration, so many sources!',
     repository: 'https://github.com',
     website: 'https://kspr.dev',

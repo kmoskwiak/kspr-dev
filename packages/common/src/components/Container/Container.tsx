@@ -4,6 +4,8 @@ import { styles } from './Container.css';
 interface ContainerProps {
   children: React.ReactNode;
   marginTop?: string;
+  display?: 'grid'
+  zIndex?: string
 }
 
 /**
@@ -12,11 +14,13 @@ interface ContainerProps {
 export const Container = ({
   children,
   marginTop,
+  display,
+  zIndex,
   ...props
 }: ContainerProps) => {
 
   return (
-    <div {...props} css={styles} style={{ marginTop }}>
+    <div css={styles({display, zIndex})} style={{ marginTop }} {...props}>
       {children}
     </div>
   );

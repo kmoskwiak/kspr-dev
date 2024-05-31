@@ -1,15 +1,10 @@
-import React from 'react';
 import { styles } from './ProjectCard.css';
 import { Card } from '../Card';
 import { Header } from '../Header';
 
 interface ProjectCardProps {
-  /**
-   * Children of the card
-   */
-  children: React.ReactNode;
   name: string;
-  id: string;
+  projectId: string;
   description: string;
   website?: string;
   repository?: string;
@@ -20,9 +15,8 @@ interface ProjectCardProps {
  * Primary UI component for user interaction
  */
 export const ProjectCard = ({
-  children,
   name,
-  id,
+  projectId,
   description,
   website,
   repository,
@@ -31,10 +25,10 @@ export const ProjectCard = ({
 }: ProjectCardProps) => {
 
   return (
-    <a {...props} href={href} css={styles}>
+    <div {...props} css={styles}>
       <Card>
         <div className='container'>
-          <div className="counter">{id}</div>
+          <div className="counter">{projectId}</div>
           <div className='content'>
             <div className="details">
               <Header>{name}</Header>
@@ -55,6 +49,6 @@ export const ProjectCard = ({
           </div>
         </div>
       </Card>
-    </a>
+    </div>
   );
 };
