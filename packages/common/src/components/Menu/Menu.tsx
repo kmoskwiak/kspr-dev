@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { styles } from './Menu.css';
 
 interface Link {
@@ -21,15 +21,15 @@ export const Menu = ({
   return (
     <div {...props} css={styles}>
       {links.map((link) => (
-        <a
+        <Link
           arial-label={link.title}
           className='link'
           key={link.url}
-          href={link.url}>
+          to={link.url}>
           <span className='text'>
             {link.title}
           </span>
-        </a>
+        </Link>
       ))}
     </div>
   );

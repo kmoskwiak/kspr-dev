@@ -1,6 +1,7 @@
 import { styles } from './ProjectCard.css';
 import { Card } from '../Card';
 import { Header } from '../Header';
+import { ProjectDetails } from '../ProjectDetails';
 
 interface ProjectCardProps {
   name: string;
@@ -27,27 +28,14 @@ export const ProjectCard = ({
   return (
     <div {...props} css={styles}>
       <Card>
-        <div className='container'>
-          <div className="counter">{projectId}</div>
-          <div className='content'>
-            <div className="details">
-              <Header>{name}</Header>
-              <div className="description">{description}</div>
-              <div className="links">
-                {website && (
-                  <a className="project-link" href={website}>
-                    Project website
-                  </a>
-                )}
-                {repository && (
-                  <a className="project-link" href={repository}>
-                    GitHub
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
+        <ProjectDetails
+          name={name}
+          projectId={projectId}
+          description={description}
+          website={website}
+          repository={repository}
+          href={href}
+        />
       </Card>
     </div>
   );

@@ -9,3 +9,5 @@ export * from "./Image";
 export * from "./Logo";
 export * from "./Menu";
 export * from "./ProjectCard";
+export * from "./ProjectDetails";
+export * from "./Footer";

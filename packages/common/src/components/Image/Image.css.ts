@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { theme } from '../../theme';
 
 export const styles = css`
-  border: 2px solid ${theme.two};
+  border: 1px solid ${theme.two};
   padding: 0;
   border-radius: 1rem;
   background-color: ${theme.one};

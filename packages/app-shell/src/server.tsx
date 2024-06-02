@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 import morgan from "morgan";
 import { Router } from "./shell/routes/Router";
 import { renderToPipeableStream } from "react-dom/server";
+import { globalStyles } from "./shell/global.css";
 
 process.on("unhandledRejection", function (err, promise) {
   console.error(
@@ -17,11 +18,6 @@ process.on("unhandledRejection", function (err, promise) {
   );
 });
 
-console.log(__dirname);
-console.log(path.resolve(__dirname, "../../dist/index.html"));
-
-
-
 const pageRaw = fs.readFileSync(
   path.resolve(__dirname, "../../dist/index.html"),
   {
@@ -29,10 +25,17 @@ const pageRaw = fs.readFileSync(
   }
 );
 
+const publicFiles = fs.readdirSync(path.resolve(__dirname, "../../dist/public"));
+
 const parts = pageRaw.split("<!-- break here -->");
 const app = express();
 
+publicFiles.forEach((file) => {
+  app.use(`/${file}`, express.static(path.resolve(__dirname, `../../dist/public/${file}`)));
+});
+
 app.use("/static", express.static(path.resolve(__dirname, "../../dist")));
+
 app.use(morgan("combined"));
 
 app.use("/", async (req, res, next) => {
@@ -47,7 +50,7 @@ app.use("/", async (req, res, next) => {
 
   const stream = renderToPipeableStream(
     <StaticRouter location={req.url}>
-        <Router />
+      <Router />
     </StaticRouter>,
     {
       onAllReady() {
@@ -57,13 +60,18 @@ app.use("/", async (req, res, next) => {
         const helmet = Helmet.renderStatic();
         res.write(helmet.title.toString());
         res.write(helmet.meta.toString());
-        res.write
+
+        res.write(`
+          <style>
+            ${globalStyles.styles}
+          </style>
+        `);
+
         res.write(parts[1]);
 
         stream.pipe(res);
 
         res.write(parts[2]);
-
         res.write(parts[3]);
       },
       onShellError() {

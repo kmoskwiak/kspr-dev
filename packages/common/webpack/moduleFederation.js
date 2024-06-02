@@ -22,7 +22,11 @@ const shared = {
     "react-router-dom": {
         singleton: true, 
         requiredVersion: common.dependencies['react-router-dom']
-    }
+    },
+    "@emotion/react": {
+        singleton: true, 
+        requiredVersion: common.dependencies['@emotion/react']
+    },
 }
 
 const buildExposeMap = (exposes, type) => {

@@ -9,13 +9,13 @@ const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 
 module.exports = merge(commonConfig, {
   entry: "./index.server.ts",
-  mode: "production",
+  mode: "development",
   target: 'node',
   output: {
     filename: "js/server.js",
     path: resolve(__dirname, "../../dist-server"),
   },
-  devtool: "source-map",
+  devtool: "cheap-module-source-map",
   externals: {},
   plugins: [
     new CopyPlugin({
@@ -33,6 +33,7 @@ module.exports = merge(commonConfig, {
         kspr_dev_articles: "kspr_dev_articles@http://localhost:3014/remoteEntry.js",
         kspr_dev_header: "kspr_dev_header@http://localhost:3016/remoteEntry.js",
         kspr_dev_projects: "kspr_dev_projects@http://localhost:3018/remoteEntry.js",
+        kspr_dev_footer: "kspr_dev_footer@http://localhost:3020/remoteEntry.js",
       },
       shared: {
         react: {singleton: true, requiredVersion: common.dependencies['react']}, 

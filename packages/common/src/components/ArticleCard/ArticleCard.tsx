@@ -7,8 +7,10 @@ interface ArticleCardProps {
   title: string;
   description: string;
   website?: string;
-  date?: Date;
+  date?: string;
   imageSrc?: string;
+  compact?: boolean;
+  href?: string;
 }
 
 /**
@@ -20,15 +22,19 @@ export const ArticleCard = ({
   website,
   date,
   imageSrc,
+  compact,
+  href,
   ...props
 }: ArticleCardProps) => {
 
+  const compactClassName = compact ? 'compact' : '';
+
   return (
-    <div {...props} css={styles}>
+    <a {...props} href={href} css={styles({ compact })} className={compactClassName}>
       <div className='image-wrapper'>
         <Image src={imageSrc} alt={title} square filter='grayscale' />
       </div>
       <ArticleDetails title={title} description={description} website={website} date={date} />
-    </div>
+    </a>
   );
 };

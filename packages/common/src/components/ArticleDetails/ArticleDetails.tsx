@@ -5,7 +5,7 @@ interface ArticleDetailsProps {
   title: string;
   description: string;
   website?: string;
-  date?: Date;
+  date?: string;
 }
 
 /**
@@ -28,7 +28,7 @@ export const ArticleDetails = ({
             <div className="meta">
               {date && (
                 <span className="meta-date">
-                  {date.toLocaleDateString()}
+                  {date}
                 </span>
               )}
               {website && (

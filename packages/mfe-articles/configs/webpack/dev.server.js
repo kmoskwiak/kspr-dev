@@ -9,6 +9,7 @@ module.exports = webpackConfig({
     devPort: 3014,
     moduleName: "kspr_dev_articles",
     moduleExposes: {
+      './LastArticle': './src/LastArticle',
       './Articles': './src/Articles',
     },
 });

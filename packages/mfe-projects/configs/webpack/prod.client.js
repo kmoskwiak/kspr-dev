@@ -8,6 +8,7 @@ module.exports = webpackConfig({
   envType: "client",
   moduleName: "kspr_dev_projects",
   moduleExposes: {
+    './CurrentlyWorkingOn': './src/CurrentlyWorkingOn',
     './Projects': './src/Projects',
   },
 });

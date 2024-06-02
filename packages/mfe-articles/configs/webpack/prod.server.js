@@ -8,6 +8,7 @@ module.exports = webpackConfig({
   envType: "server",
   moduleName: "kspr_dev_articles",
   moduleExposes: {
+    './LastArticle': './src/LastArticle',
     './Articles': './src/Articles',
   },
 });

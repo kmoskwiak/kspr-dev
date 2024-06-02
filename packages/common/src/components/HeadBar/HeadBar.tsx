@@ -19,9 +19,9 @@ export const HeadBar = ({
     <div css={styles}>
       <Card>
         <div className='container'>
-          <div className='logo'>
+          <a className='logo' href="/">
             <Logo />
-          </div>
+          </a>
           <div className='menu'>
             {children}
           </div>

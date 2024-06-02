@@ -1,47 +1,39 @@
-import { ProjectCard } from "@kspr-dev/common/components/ProjectCard";
+import { ProjectDetails } from "@kspr-dev/common/components/ProjectDetails";
 import { Container } from "@kspr-dev/common/components/Container";
 import { ConicGradient } from "@kspr-dev/common/components/ConicGradient"
 import { style } from "./Projects.css";
+import projectsData from './data.json';
 
 export const Projects = () => {
 
-  const projects = [
-    {
-      name: 'useSSE',
-      projectId: '01',
-      description: 'use Server-Side Effect in React SSR app'
-    },
-    {
-      name: 'muchconf',
-      projectId: '02',
-      description: 'Wow! So much configuration, so many sources!'
-    }
-  ];
-
+  const projects = projectsData.map((project, index) => ({
+    name: project.name,
+    projectId: index.toString(),
+    description: project.description,
+    repository: project.html_url,
+    website: project.homepage
+  })
+  );
 
   return (
     <div css={style}>
-      <Container marginTop="6rem" display="grid" zIndex="40">
+      <Container marginTop="6rem">
         {
           projects.map(({
             name,
             projectId,
-            description
+            description,
+            website,
+            repository
           }, index) => (
             <div key={projectId} className="container">
-              {
-                index === 0 && (
-                  <div className="gradient-container">
-                    <ConicGradient />
-                  </div>
-                )
-              }
-
               <div className="project-card-container">
-                <ProjectCard
+                <ProjectDetails
                   name={name}
                   projectId={projectId}
                   description={description}
+                  repository={repository}
+                  website={website}
                 />
               </div>
             </div>

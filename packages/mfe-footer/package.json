@@ -1,0 +1,22 @@
+{
+    "name": "@kspr-dev/mfe-footer",
+    "version": "0.1.0",
+    "description": "kspr.dev footer microfrontend",
+    "author": "Kasper Moskwiak",
+    "main": "./src/entry.tsx",
+    "scripts": {
+        "build": "webpack --config=configs/webpack/prod.js",
+        "build:server": "webpack --config=configs/webpack/server.js",
+        "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
+        "start": "concurrently --kill-others \"npm run start:client\" \"npm run start:server\"",
+        "start:server": "webpack serve --config=configs/webpack/dev.server.js",
+        "start:client": "webpack serve --config=configs/webpack/dev.client.js",
+        "start:dev": "webpack serve --config=configs/webpack/dev.js",
+        "start:prod": "npm run build && node express.js",
+        "test": "jest --coverage --watchAll --config=configs/jest.json"
+    },
+    "devDependencies": {},
+    "dependencies": {
+        "@kspr-dev/common": "*"
+    }
+}

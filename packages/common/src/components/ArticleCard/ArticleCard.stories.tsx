@@ -28,8 +28,19 @@ export const Basic: Story = {
   args: {
     title: 'A Memory-Friendly Way of Reading Files in Node.js',
     description: 'The need to read a file may arise in a variety of cases. It may be a one-time job of parsing error logs, a functionality of an application, a scheduled data migration task, part of a deployment pipeline, etc. ',
-    date: new Date(),
+    date: new Date().toLocaleDateString(),
     website: 'Medium',
     imageSrc: 'https://cdn-images-1.medium.com/max/2400/1*0Y8z9n07OCfkF8Oe2v_1gQ.jpeg'
+  },
+};
+
+export const Compact: Story = {
+  args: {
+    title: 'A Memory-Friendly Way of Reading Files in Node.js',
+    description: 'The need to read a file may arise in a variety of cases. It may be a one-time job of parsing error logs, a functionality of an application, a scheduled data migration task, part of a deployment pipeline, etc. ',
+    date: new Date().toLocaleDateString(),
+    website: 'Medium',
+    imageSrc: 'https://cdn-images-1.medium.com/max/2400/1*0Y8z9n07OCfkF8Oe2v_1gQ.jpeg',
+    compact: true
   },
 };

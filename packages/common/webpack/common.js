@@ -21,6 +21,12 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
+          "url-loader?limit=10",
+        ],
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [
           "file-loader?hash=sha512&digest=hex&name=img/[contenthash].[ext]",
         ],
       },
