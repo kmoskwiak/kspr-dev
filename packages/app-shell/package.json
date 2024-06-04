@@ -4,14 +4,17 @@
     "description": "kspr.dev app shell",
     "author": "Kasper Moskwiak",
     "scripts": {
-        "build:client": "webpack --config=configs/webpack/dev.client.js",
-        "build:server": "webpack --config=configs/webpack/dev.server.js",
+        "dev:build:client": "webpack --config=configs/webpack/dev.client.js",
+        "dev:build:server": "webpack --config=configs/webpack/dev.server.js",
+        "build:prod:client": "webpack --config=configs/webpack/prod.client.js",
+        "build:prod:server": "webpack --config=configs/webpack/prod.server.js",
         "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
         "start": "npm run watch",
         "start:server": "node --enable-source-maps ./dist-server/js/server.js",
         "start:prod": "npm run build && node express.js",
         "test": "jest --coverage --watchAll --config=configs/jest.json",
-        "watch": "nodemon --watch ./src --exec \"npm run build:client && npm run build:server && npm run start:server\""
+        "watch": "nodemon --watch ./src --exec \"npm run dev:build:client && npm run dev:build:server && npm run start:server\"",
+        "build:prod": "concurrently \"npm run build:prod:client\" \"npm run build:prod:server\""
     },
     "dependencies": {
         "@emotion/server": "^11.11.0",
