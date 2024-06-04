@@ -6,6 +6,8 @@
   ],
   "scripts": {
     "start": "lerna run start --parallel",
+    "start:prod": "node dist/app-shell/dist-server/js/server.js",
+    "build:prod": "lerna run build:prod --parallel",
     "storybook": "lerna run storybook --parallel"
   },
   "dependencies": {},

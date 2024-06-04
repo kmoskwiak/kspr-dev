@@ -1,0 +1,17 @@
+{
+    "name": "@kspr-dev/static-server",
+    "version": "0.1.0",
+    "description": "kspr.dev static server",
+    "author": "Kasper Moskwiak",
+    "scripts": {
+        "start:server": "node server.js"
+    },
+    "dependencies": {
+        "@kspr-dev/common": "*"
+    },
+    "devDependencies": {
+        "express": "^4.19.2",
+        "morgan": "^1.10.0",
+        "react-helmet": "^6.1.0"
+    }
+}
