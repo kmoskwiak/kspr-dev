@@ -30,10 +30,10 @@ module.exports = merge(commonConfig, {
     new ModuleFederationPlugin({
       name: "kspr_dev_shell",
       remotes: {
-        kspr_dev_articles: "kspr_dev_articles@[kspr_dev_articlesUrl]/remoteEntry.js",
-        kspr_dev_header: "kspr_dev_header@[kspr_dev_headerUrl]/remoteEntry.js",
-        kspr_dev_projects: "kspr_dev_projects@[kspr_dev_projectsUrl]/remoteEntry.js",
-        kspr_dev_footer: "kspr_dev_footer@[kspr_dev_footerUrl]/remoteEntry.js"
+        kspr_dev_articles: "kspr_dev_articles@http://localhost:8000/kspr_dev_articles/client/remoteEntry.js",
+        kspr_dev_header: "kspr_dev_header@http://localhost:8000/kspr_dev_header/client/remoteEntry.js",
+        kspr_dev_projects: "kspr_dev_projects@http://localhost:8000/kspr_dev_projects/client/remoteEntry.js",
+        kspr_dev_footer: "kspr_dev_footer@http://localhost:8000/kspr_dev_footer/client/remoteEntry.js"
       },
       shared: {
         react: {

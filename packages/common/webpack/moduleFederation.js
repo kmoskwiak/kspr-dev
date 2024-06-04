@@ -66,7 +66,7 @@ module.exports =  ({
             new NodeFederationPlugin({
                 name,
                 filename: 'remoteEntry.js',
-                library: { type: "commonjs-module" },
+                library: { type: "commonjs-module", name },
                 exposes: serverExposes,
                 shared
             }),

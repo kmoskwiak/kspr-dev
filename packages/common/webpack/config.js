@@ -51,8 +51,8 @@ module.exports = ({
     devtool: "source-map",
     output: {
       filename: "bundle.[contenthash].min.js",
-      path: resolve(__dirname, "../../dist/", envType),
-      publicPath: "/",
+      path: resolve(__dirname, "../../../dist/", moduleName, envType),
+      publicPath: `http://localhost:8000/${moduleName}/${envType}/`,
     },
   }),
   plugins: [
