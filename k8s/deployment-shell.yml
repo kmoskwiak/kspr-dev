@@ -19,5 +19,5 @@ spec:
           image: ghcr.io/kmoskwiak/kspr.dev-shell:latest
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 3000
               protocol: TCP

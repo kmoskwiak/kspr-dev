@@ -6,7 +6,7 @@ kubectl apply -f k8s/deployment-shell.yml
 
 echo "Expoosing shell deployment..."
 
-kubectl expose --port=80 --target-port=8080  deployment/kspr-dev-shell
+kubectl expose --port=80 --target-port=3000  deployment/kspr-dev-shell
 
 echo "Creating shell ingress..."
 
