@@ -52,7 +52,7 @@ module.exports = ({
     output: {
       filename: "bundle.[contenthash].min.js",
       path: resolve(__dirname, "../../../dist/", moduleName, envType),
-      publicPath: `http://localhost:8000/${moduleName}/${envType}/`,
+      publicPath: `https://mfs.kspr.dev/${moduleName}/${envType}/`,
     },
   }),
   plugins: [
