@@ -30,10 +30,10 @@ module.exports = merge(commonConfig, {
       name: "kspr_dev_shell",
       isServer: true,
       remotes: {
-        kspr_dev_articles: "kspr_dev_articles@http://localhost:8000/kspr_dev_articles/server/remoteEntry.js",
-        kspr_dev_header: "kspr_dev_header@http://localhost:8000/kspr_dev_header/server/remoteEntry.js",
-        kspr_dev_projects: "kspr_dev_projects@http://localhost:8000/kspr_dev_projects/server/remoteEntry.js",
-        kspr_dev_footer: "kspr_dev_footer@http://localhost:8000/kspr_dev_footer/server/remoteEntry.js"
+        kspr_dev_articles: "kspr_dev_articles@https://mfs.kspr.dev/kspr_dev_articles/server/remoteEntry.js",
+        kspr_dev_header: "kspr_dev_header@https://mfs.kspr.dev/mfs/kspr_dev_header/server/remoteEntry.js",
+        kspr_dev_projects: "kspr_dev_projects@https://mfs.kspr.dev/mfs/kspr_dev_projects/server/remoteEntry.js",
+        kspr_dev_footer: "kspr_dev_footer@https://mfs.kspr.dev/mfs/kspr_dev_footer/server/remoteEntry.js"
       },
       shared: {
         react: {singleton: true, requiredVersion: common.dependencies['react']}, 

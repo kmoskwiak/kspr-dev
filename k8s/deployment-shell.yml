@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kspr-dev-shell
+  labels:
+    name: kspr-dev-shell
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: kspr-dev-shell
+  template:
+    metadata:
+      labels:
+        name: kspr-dev-shell
+    spec:
+      containers:
+        - name: kspr-dev-shell
+          image: ghcr.io/kmoskwiak/kspr.dev-shell:latest
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP

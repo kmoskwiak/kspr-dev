@@ -1,0 +1,19 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: "kspr-dev-shell"
+  namespace: default
+
+spec:
+  rules:
+    - host: v2.kspr.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kspr-dev-shell
+                port:
+                  number: 80
+                  

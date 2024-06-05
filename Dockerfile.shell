@@ -1,0 +1,23 @@
+FROM node:alpine as build
+
+WORKDIR /app
+
+COPY . /app/
+
+RUN npm ci
+
+RUN npm run build:prod -w @kspr-dev/app-shell
+
+FROM node:alpine
+
+COPY --from=build /app/packages/app-shell/dist /app/packages/app-shell/dist/
+COPY --from=build /app/packages/app-shell/dist-server /app/packages/app-shell/dist-server/
+COPY --from=build /app/packages/app-shell/node_modules /app/packages/app-shell/node_modules/
+COPY --from=build /app/packages/app-shell/package.json /app/packages/app-shell/package.json
+COPY --from=build /app/package-lock.json /app/package-lock.json
+COPY --from=build /app/package.json /app/package.json
+COPY --from=build /app/node_modules /app/node_modules
+
+EXPOSE 8080
+
+CMD ["node", "/app/packages/app-shell/dist-server/js/server.js"];

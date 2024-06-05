@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kspr-dev-mfs
+  labels:
+    name: kspr-dev-mfs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: kspr-dev-mfs
+  template:
+    metadata:
+      labels:
+        name: kspr-dev-mfs
+    spec:
+      containers:
+        - name: kspr-dev-mfs
+          image: ghcr.io/kmoskwiak/kspr.dev-mfs:latest
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
