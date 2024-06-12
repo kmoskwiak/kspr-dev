@@ -1,5 +1,4 @@
 import { styles } from './ArticleCard.css';
-import { Header } from '../Header';
 import { ArticleDetails } from '../ArticleDetails';
 import { Image } from '../Image';
 

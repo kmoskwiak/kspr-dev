@@ -8,7 +8,7 @@ export const styles = css`
   font-family: ${theme.fontMain};
   color: ${theme.two};
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 1260px) {
     transform: scale(1);
   }
 

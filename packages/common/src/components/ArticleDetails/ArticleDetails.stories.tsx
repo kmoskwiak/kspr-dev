@@ -28,7 +28,7 @@ export const Basic: Story = {
   args: {
     title: 'A Memory-Friendly Way of Reading Files in Node.js',
     description: 'The need to read a file may arise in a variety of cases. It may be a one-time job of parsing error logs, a functionality of an application, a scheduled data migration task, part of a deployment pipeline, etc. ',
-    date: new Date(),
+    date: '2021-09-01',
     website: 'Medium',
   },
 };

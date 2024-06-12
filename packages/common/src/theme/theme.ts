@@ -5,7 +5,15 @@ export const theme = {
   //one: "#131313",
   //two: "#ABBED0",
   one: "#131313",
+  oneRgb: "19, 19, 19",
   two: "#ABBED0",
+  twoRgb: "171, 190, 208",
   fontMono: '"Fira Code", monospace',
-  fontMain: 'Ubuntu, sans-serif'
-};
+  fontMain: 'Ubuntu, sans-serif',
+  breakpoints: {
+    sm: "576px",
+    md: "768px",
+    lg: "992px",
+    xl: "1200px",
+  },
+} as const;

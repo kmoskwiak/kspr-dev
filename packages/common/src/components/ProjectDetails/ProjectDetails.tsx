@@ -30,7 +30,7 @@ export const ProjectDetails = ({
         <div className="counter">{projectId}</div>
         <div className='content'>
           <div className="details">
-            <Header>{name}</Header>
+            <Header outline>{name}</Header>
             <div className="description">{description}</div>
             <div className="links">
               {website && (

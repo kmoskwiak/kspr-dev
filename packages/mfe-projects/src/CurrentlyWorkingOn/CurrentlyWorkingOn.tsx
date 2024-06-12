@@ -1,6 +1,7 @@
 import { ProjectCard } from "@kspr-dev/common/components/ProjectCard";
+import { ConicGradient } from "@kspr-dev/common/components/ConicGradient";
 import { Container } from "@kspr-dev/common/components/Container";
-import { ConicGradient } from "@kspr-dev/common/components/ConicGradient"
+import { Header } from "@kspr-dev/common/components/Header";
 import { style } from "./CurrentlyWorkingOn.css";
 
 export const Projects = () => {
@@ -23,8 +24,14 @@ export const Projects = () => {
 
 
   return (
-    <div css={style}>
-      <Container marginTop="6rem" display="grid" zIndex="40">
+    <>
+      <Container marginTop="2rem">
+        <Header outline font="sans-serif">
+          Currently working on
+        </Header>
+      </Container>
+      <div css={style}>
+
         {
           projects.map(({
             name,
@@ -54,7 +61,7 @@ export const Projects = () => {
             </div>
           ))
         }
-      </Container>
-    </div>
+      </div>
+    </>
   );
 };

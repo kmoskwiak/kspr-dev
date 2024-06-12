@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { styles } from './Menu.css';
+import { MenuMobileSelect } from './MenuMobileSelect2';
+import { MenuDesktop } from './MenuDesktop';
 
 interface Link {
   title: string;
@@ -10,6 +11,7 @@ interface MenuProps {
   links: Link[];
 }
 
+
 /**
  * Primary UI component for user interaction
  */
@@ -19,18 +21,9 @@ export const Menu = ({
 }: MenuProps) => {
 
   return (
-    <div {...props} css={styles}>
-      {links.map((link) => (
-        <Link
-          arial-label={link.title}
-          className='link'
-          key={link.url}
-          to={link.url}>
-          <span className='text'>
-            {link.title}
-          </span>
-        </Link>
-      ))}
-    </div>
+    <>
+      <MenuMobileSelect links={links} {...props} />
+      <MenuDesktop links={links} {...props} />
+    </>
   );
 };

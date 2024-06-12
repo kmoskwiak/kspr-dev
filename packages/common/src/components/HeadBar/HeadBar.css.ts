@@ -3,6 +3,7 @@ import { theme } from '../../theme';
 
 export const styles = css`
   width: 100%;
+  position: static;
   
   .container {
     display: grid;

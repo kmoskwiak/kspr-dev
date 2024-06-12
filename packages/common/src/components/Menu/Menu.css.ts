@@ -4,12 +4,17 @@ import { theme } from '../../theme';
 export const styles = css`
   font-family: ${theme.fontMain};
   color: ${theme.two};
-  display: grid;
-  gap: 1rem;
-  grid-template-rows: 1fr;
-  grid-auto-flow: column;
-  font-size: 0.9rem;
-  align-items: stretch;
+  display: none;
+
+  @media (min-width: ${theme.breakpoints.sm}) {
+    display: grid;
+    gap: 1rem;
+    grid-template-rows: 1fr;
+    grid-auto-flow: column;
+    font-size: 0.9rem;
+    align-items: stretch;
+  }
+
 
   .link {
     color: ${theme.two};

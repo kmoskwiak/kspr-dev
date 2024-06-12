@@ -8,8 +8,12 @@ type Props = {
 
 export const styles = ({ display, zIndex }: Props) => css`
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 1rem;
   position: relative;
+
+  @media (min-width: 1200px) {
+    margin: 0 auto;
+  }
 
   z-index: ${zIndex ? zIndex : '50'};
 

@@ -4,7 +4,7 @@ import { Container } from "@kspr-dev/common/components/Container";
 
 export const Header = () => {
   return (
-    <Container marginTop="3rem">
+    <Container marginTop="3rem" zIndex="999">
       <HeadBar>
         <Menu links={[
           {
