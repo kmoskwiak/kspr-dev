@@ -33,7 +33,9 @@ export const ArticleCard = ({
       <div className='image-wrapper'>
         <Image src={imageSrc} alt={title} square filter='grayscale' />
       </div>
-      <ArticleDetails title={title} description={description} website={website} date={date} />
+      <div className='details-wrapper'>
+        <ArticleDetails title={title} description={description} website={website} date={date} />
+      </div>
     </a>
   );
 };
