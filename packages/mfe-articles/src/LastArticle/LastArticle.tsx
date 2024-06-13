@@ -14,7 +14,7 @@ export const Articles = () => {
       <Container marginTop="1rem">
         <ArticleCard
           title="A Memory-Friendly Way of Reading Files in Node.js"
-          imageSrc="https://cdn-images-1.medium.com/max/2400/1*0Y8z9n07OCfkF8Oe2v_1gQ.jpeg"
+          imageSrc="https://cdn-images-1.medium.com/v2/resize:fit:400/1*0Y8z9n07OCfkF8Oe2v_1gQ.jpeg"
           href="https://medium.com/better-programming/a-memory-friendly-way-of-reading-files-in-node-js-a45ad0cc7bb6"
           description="The need to read a file may arise in a variety of cases. It may be a one-time job of parsing error logs, a functionality of an application, a scheduled data migration task, part of a deployment pipeline, etc."
         />
