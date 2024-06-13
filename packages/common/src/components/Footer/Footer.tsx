@@ -14,7 +14,7 @@ export const Footer = ({
       {
         avatar && (
           <div className="avatarContainer">
-            <img className="avatar" src={avatar} />
+            <img className="avatar" src={avatar} alt="That's me" />
           </div>
         )
       }

@@ -6,7 +6,7 @@ export const Articles = () => {
 
   return (
     <>
-      <Container marginTop="6rem">
+      <Container marginTop="3rem">
         <Header outline font="sans-serif">
           My last article
         </Header>

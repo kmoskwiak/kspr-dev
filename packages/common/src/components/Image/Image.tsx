@@ -24,7 +24,7 @@ export const Image = ({
 
   return (
     <div {...props} css={styles} className={aspectRatio}>
-      <img src={src} className={filterClass} alt={alt} loading="lazy" />
+      <img src={src} className={filterClass} alt={alt} />
     </div>
   );
 };
