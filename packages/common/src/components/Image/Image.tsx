@@ -15,6 +15,7 @@ export const Image = ({
   src,
   filter,
   square,
+  alt,
   ...props
 }: ImageProps) => {
 
@@ -23,7 +24,7 @@ export const Image = ({
 
   return (
     <div {...props} css={styles} className={aspectRatio}>
-      <img src={src} className={filterClass} />
+      <img src={src} className={filterClass} alt={alt} loading="lazy" />
     </div>
   );
 };

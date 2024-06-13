@@ -23,3 +23,6 @@ kubectl expose --port=80 --target-port=80  deployment/kspr-dev-mfs
 echo "Creating mfs ingress..."
 
 kubectl apply -f k8s/ingress-mfs.yml
+
+kubectl rollout restart deployment kspr-dev-mfs
+kubectl rollout restart deployment kspr-dev-shell

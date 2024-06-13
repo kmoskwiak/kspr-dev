@@ -17,7 +17,7 @@ export const MenuMobileSelect = ({
     return (
         <div {...props} css={styles} className={`${active ? 'active' : ''}`}>
             <div className='menu-position'>
-                <button onClick={activate} className='menu-bubble'>
+                <button onClick={activate} className='menu-bubble' aria-label='Menu'>
                     <MenuIcon />
                 </button>
 

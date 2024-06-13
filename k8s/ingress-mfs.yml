@@ -3,6 +3,8 @@ apiVersion: networking.k8s.io/v1
 metadata:
   name: "kspr-dev-mfs"
   namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 
 spec:
   rules:
@@ -16,4 +18,8 @@ spec:
                 name: kspr-dev-mfs
                 port:
                   number: 80
+      tls:
+      - hosts:
+        - mfs.kspr.dev
+        secretName: kspr-dev-mfs-tls
                   
