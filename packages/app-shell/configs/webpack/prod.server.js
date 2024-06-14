@@ -3,10 +3,11 @@ const { merge } = require("webpack-merge");
 const { resolve } = require("path");
 const CopyPlugin = require('copy-webpack-plugin');
 const commonConfig = require("./common");
-const { buildTimestamp } = require("./common");
 const common = require('@kspr-dev/common/dependencies');
 const { UniversalFederationPlugin } = require("@module-federation/node");
 const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
+
+const buildTimestamp = new Date().getTime().toString(32);
 
 module.exports = merge(commonConfig, {
   entry: "./index.server.ts",

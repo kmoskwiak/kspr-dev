@@ -6,8 +6,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const common = require('@kspr-dev/common/dependencies');
 const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
-const { buildTimestamp } = require("./common");
 const commonConfig = require("./common");
+
+const buildTimestamp = new Date().getTime().toString(32);
 
 module.exports = merge(commonConfig, {
   mode: "production",
