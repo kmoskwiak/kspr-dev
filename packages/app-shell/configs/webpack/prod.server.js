@@ -3,6 +3,7 @@ const { merge } = require("webpack-merge");
 const { resolve } = require("path");
 const CopyPlugin = require('copy-webpack-plugin');
 const commonConfig = require("./common");
+const { buildTimestamp } = require("./common");
 const common = require('@kspr-dev/common/dependencies');
 const { UniversalFederationPlugin } = require("@module-federation/node");
 const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
@@ -30,10 +31,10 @@ module.exports = merge(commonConfig, {
       name: "kspr_dev_shell",
       isServer: true,
       remotes: {
-        kspr_dev_articles: "kspr_dev_articles@https://mfs.kspr.dev/kspr_dev_articles/server/remoteEntry.js",
-        kspr_dev_header: "kspr_dev_header@https://mfs.kspr.dev/kspr_dev_header/server/remoteEntry.js",
-        kspr_dev_projects: "kspr_dev_projects@https://mfs.kspr.dev/kspr_dev_projects/server/remoteEntry.js",
-        kspr_dev_footer: "kspr_dev_footer@https://mfs.kspr.dev/kspr_dev_footer/server/remoteEntry.js"
+        kspr_dev_articles: "kspr_dev_articles@https://mfs.kspr.dev/kspr_dev_articles/server/remoteEntry.js?v=" + buildTimestamp,
+        kspr_dev_header: "kspr_dev_header@https://mfs.kspr.dev/kspr_dev_header/server/remoteEntry.js?v=" + buildTimestamp,
+        kspr_dev_projects: "kspr_dev_projects@https://mfs.kspr.dev/kspr_dev_projects/server/remoteEntry.js?v=" + buildTimestamp,
+        kspr_dev_footer: "kspr_dev_footer@https://mfs.kspr.dev/kspr_dev_footer/server/remoteEntry.js?v=" + buildTimestamp,
       },
       shared: {
         react: {singleton: true, requiredVersion: common.dependencies['react']}, 

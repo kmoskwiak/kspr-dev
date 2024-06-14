@@ -1,6 +1,8 @@
 // shared config (dev and prod)
 const { resolve } = require("path");
 
+exports.buildTimestamp = new Date().getTime().toString(32);
+
 module.exports = {
   entry: "./index.ts",
   resolve: {

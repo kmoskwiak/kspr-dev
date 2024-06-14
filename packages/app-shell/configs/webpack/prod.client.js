@@ -6,8 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const common = require('@kspr-dev/common/dependencies');
 const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
-
-
+const { buildTimestamp } = require("./common");
 const commonConfig = require("./common");
 
 module.exports = merge(commonConfig, {
@@ -30,10 +29,10 @@ module.exports = merge(commonConfig, {
     new ModuleFederationPlugin({
       name: "kspr_dev_shell",
       remotes: {
-        kspr_dev_articles: "kspr_dev_articles@https://mfs.kspr.dev/kspr_dev_articles/client/remoteEntry.js",
-        kspr_dev_header: "kspr_dev_header@https://mfs.kspr.dev/kspr_dev_header/client/remoteEntry.js",
-        kspr_dev_projects: "kspr_dev_projects@https://mfs.kspr.dev/kspr_dev_projects/client/remoteEntry.js",
-        kspr_dev_footer: "kspr_dev_footer@https://mfs.kspr.dev/kspr_dev_footer/client/remoteEntry.js"
+        kspr_dev_articles: "kspr_dev_articles@https://mfs.kspr.dev/kspr_dev_articles/client/remoteEntry.js?v=" + buildTimestamp,
+        kspr_dev_header: "kspr_dev_header@https://mfs.kspr.dev/kspr_dev_header/client/remoteEntry.js?v=" + buildTimestamp,
+        kspr_dev_projects: "kspr_dev_projects@https://mfs.kspr.dev/kspr_dev_projects/client/remoteEntry.js?v=" + buildTimestamp,
+        kspr_dev_footer: "kspr_dev_footer@https://mfs.kspr.dev/kspr_dev_footer/client/remoteEntry.js?v=" + buildTimestamp,
       },
       shared: {
         react: {
