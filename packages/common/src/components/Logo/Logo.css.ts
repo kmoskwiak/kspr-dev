@@ -17,14 +17,21 @@ export const styles = css`
     --header-shadow-offset: 0.5px;
     --header-shadow-negative-offset: -0.5px;
 
-    text-shadow: var(--header-shadow-offset) 0 var(--header-shadow-spread) ${theme.two}, 0 var(--header-shadow-offset) var(--header-shadow-spread) ${theme.two}, var(--header-shadow-negative-offset) 0 var(--header-shadow-spread) ${theme.two}, 0px var(--header-shadow-negative-offset) var(--header-shadow-spread) ${theme.two};
+    color: ${theme.purple};
+    //text-shadow: var(--header-shadow-offset) 0 var(--header-shadow-spread) ${theme.two}, 0 var(--header-shadow-offset) var(--header-shadow-spread) ${theme.two}, var(--header-shadow-negative-offset) 0 var(--header-shadow-spread) ${theme.two}, 0px var(--header-shadow-negative-offset) var(--header-shadow-spread) ${theme.two};
+    background: -webkit-linear-gradient(0deg, ${theme.blue}, ${theme.purple});
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+
     position: absolute;
     top: -2.2rem;
     left: -2.5rem;
     font-weight: 700;
     font-size: 2.3rem;
     line-height: 2rem;
-    color: ${theme.one};
     display: inline-block;
     transform: rotate(5deg);
   }

@@ -1,6 +1,5 @@
 import { ProjectDetails } from "@kspr-dev/common/components/ProjectDetails";
 import { Container } from "@kspr-dev/common/components/Container";
-import { ConicGradient } from "@kspr-dev/common/components/ConicGradient"
 import { style } from "./Projects.css";
 import projectsData from './data.json';
 
@@ -8,7 +7,7 @@ export const Projects = () => {
 
   const projects = projectsData.map((project, index) => ({
     name: project.name,
-    projectId: index.toString(),
+    projectId: ('0' + index.toString()).slice(-2),
     description: project.description,
     repository: project.html_url,
     website: project.homepage

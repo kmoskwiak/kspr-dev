@@ -1,0 +1,18 @@
+{
+  "name": "@kspr-dev/use-sse",
+  "version": "0.1.0",
+  "description": "kspr.dev use-sse",
+  "author": "Kasper Moskwiak",
+  "main": "./src/index.ts",
+
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}

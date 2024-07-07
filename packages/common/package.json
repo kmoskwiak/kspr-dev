@@ -16,6 +16,8 @@
   "types": "./src/**/*",
   "dependencies": {
     "@emotion/react": "^11.11.4",
+    "@kspr-dev/use-sse": "^0.1.0",
+    "axios": "^1.7.2",
     "drag-drop-touch": "^1.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

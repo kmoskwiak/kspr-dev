@@ -26,7 +26,7 @@ export const Projects = () => {
   return (
     <>
       <Container marginTop="2rem">
-        <Header outline font="sans-serif">
+        <Header font="sans-serif">
           Currently working on
         </Header>
       </Container>

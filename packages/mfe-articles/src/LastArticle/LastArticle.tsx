@@ -1,23 +1,42 @@
 import { ArticleCard } from "@kspr-dev/common/components/ArticleCard";
 import { Container } from "@kspr-dev/common/components/Container";
 import { Header } from "@kspr-dev/common/components/Header";
+import { useSSE } from "@kspr-dev/use-sse";
+import axios from "axios";
+
+const API = "https://dsa.kspr.dev/list/lastArticle";
+
+type ArticleProps = {
+  "title": string,
+  "description": string,
+  "url": string,
+  "image": string,
+  "publicationDate": string
+}
 
 export const Articles = () => {
+
+  const [data] = useSSE<ArticleProps[]>(() => {
+    return axios.get(API).then((res) => res.data);
+  }, []);
 
   return (
     <>
       <Container marginTop="3rem">
-        <Header outline font="sans-serif">
+        <Header font="sans-serif">
           My last article
         </Header>
       </Container>
       <Container marginTop="1rem">
-        <ArticleCard
-          title="A Memory-Friendly Way of Reading Files in Node.js"
-          imageSrc="https://cdn-images-1.medium.com/v2/resize:fit:400/1*0Y8z9n07OCfkF8Oe2v_1gQ.jpeg"
-          href="https://medium.com/better-programming/a-memory-friendly-way-of-reading-files-in-node-js-a45ad0cc7bb6"
-          description="The need to read a file may arise in a variety of cases. It may be a one-time job of parsing error logs, a functionality of an application, a scheduled data migration task, part of a deployment pipeline, etc."
-        />
+        {data?.map((article) => (
+          <ArticleCard
+            key={article.title}
+            title={article.title}
+            imageSrc={article.image}
+            href={article.url}
+            description={article.description}
+          />
+        ))}
       </Container>
     </>
   );

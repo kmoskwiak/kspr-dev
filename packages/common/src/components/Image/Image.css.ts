@@ -2,20 +2,29 @@ import { css } from '@emotion/react';
 import { theme } from '../../theme';
 
 export const styles = css`
-  border: 1px solid ${theme.two};
-  padding: 0;
-  border-radius: 1rem;
+  border: 0px solid ${theme.two};
+  padding: 0.3rem;
+  border-radius: 0.6rem;
   background-color: ${theme.one};
   overflow: hidden;
+  position: relative;
 
   img {
     display: block;
-    border-radius: 1rem;
+    border-radius: 0.4rem;
     width: 100%;
-    scale: 1.1;
+    position: relative;
 
     &.filter-grayscale {
       filter: grayscale(100%) contrast(1.2);
+    }
+
+    &.bg {
+      scale: 1.2;
+      position: absolute;
+      top: 0;
+      filter: blur(12px);
+      opacity: 0.5;
     }
   }
 

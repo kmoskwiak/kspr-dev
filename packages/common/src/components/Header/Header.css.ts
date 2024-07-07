@@ -8,6 +8,7 @@ export const styles = css`
 
   margin: 0;
   padding: 0;
+  font-weight: 400;
 
   &.font-style-sans-serif {
     font-family: ${theme.fontMain};

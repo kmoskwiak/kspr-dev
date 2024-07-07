@@ -27,6 +27,10 @@ const shared = {
         singleton: true, 
         requiredVersion: common.dependencies['@emotion/react']
     },
+    "@kspr-dev/use-sse": {
+        singleton: true,
+        requiredVersion: common.dependencies['@kspr-dev/use-sse']
+    }
 }
 
 const buildExposeMap = (exposes, type) => {

@@ -31,7 +31,7 @@ export const ArticleCard = ({
   return (
     <a {...props} href={href} css={styles({ compact })} className={compactClassName}>
       <div className='image-wrapper'>
-        <Image src={imageSrc} alt={title} square filter='grayscale' />
+        <Image src={imageSrc} alt={title} square />
       </div>
       <div className='details-wrapper'>
         <ArticleDetails title={title} description={description} website={website} date={date} />

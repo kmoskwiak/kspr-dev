@@ -15,6 +15,7 @@ export const styles = css`
   }
 
   .counter {
+    color: ${theme.blue};
     grid-area: counter;
     padding-top: 0.5rem;
     padding-right: 2rem;
