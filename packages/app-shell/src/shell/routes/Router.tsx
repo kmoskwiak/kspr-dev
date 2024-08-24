@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 const Header = React.lazy(() => import("kspr_dev_header/Header"));
+const ReSeHeader = React.lazy(() => import("kspr_dev_header/ReSeHeader"));
 const LastArticle = React.lazy(() => import("kspr_dev_articles/LastArticle"));
 const Articles = React.lazy(() => import("kspr_dev_articles/Articles"));
 const Projects = React.lazy(() => import("kspr_dev_projects/Projects"));
@@ -61,6 +62,24 @@ export const Router = () => {
               <div>
                 <Suspense fallback={<LoadingSpinner />}>
                   <Header />
+                </Suspense>
+                <Suspense fallback={<LoadingSpinner />}>
+                  <Projects />
+                </Suspense>
+                <Suspense fallback={<LoadingSpinner />}>
+                  <Footer />
+                </Suspense>
+              </div>
+            </>
+          }
+        />
+        <Route
+          path="/re/se"
+          element={
+            <>
+              <div>
+                <Suspense fallback={<LoadingSpinner />}>
+                  <ReSeHeader />
                 </Suspense>
                 <Suspense fallback={<LoadingSpinner />}>
                   <Projects />

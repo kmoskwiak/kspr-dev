@@ -1,22 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kspr-dev-shell
+  name: kspr-dev-shell-deployment
   labels:
-    name: kspr-dev-shell
+    name: kspr-dev-shell-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: kspr-dev-shell
+      name: kspr-dev-shell-deployment
   template:
     metadata:
       labels:
-        name: kspr-dev-shell
+        name: kspr-dev-shell-deployment
     spec:
       containers:
-        - name: kspr-dev-shell
+        - name: kspr-dev-shell-deployment
           image: ghcr.io/kmoskwiak/kspr.dev-shell:latest
+          imagePullPolicy: Always
           ports:
             - name: http
               containerPort: 3000

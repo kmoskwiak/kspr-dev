@@ -1,30 +1,50 @@
-import { ProjectDetails } from "@kspr-dev/common/components/ProjectDetails";
 import { Container } from "@kspr-dev/common/components/Container";
+import { ProjectDetails } from "@kspr-dev/common/components/ProjectDetails";
+import { useSSE } from "@kspr-dev/use-sse";
+import axios from "axios";
 import { style } from "./Projects.css";
-import projectsData from './data.json';
+
+const API = "https://cms.kspr.dev/items/Project";
+
+type ProjectItem = {
+  name: string,
+  description: string,
+  projectId: string,
+  sort?: number,
+  repository: string,
+  website: string
+}
+
+type ProjectResponse = {
+  data:  ProjectItem[]
+}
 
 export const Projects = () => {
 
-  const projects = projectsData.map((project, index) => ({
-    name: project.name,
-    projectId: ('0' + index.toString()).slice(-2),
-    description: project.description,
-    repository: project.html_url,
-    website: project.homepage
-  })
-  );
+  const [data] = useSSE<ProjectItem[]>(() => {
+    return axios
+      .get<ProjectResponse>(API)
+      .then((res) => res.data?.data?.map(projectItem => ({
+        name: projectItem.name,
+        projectId: ('0' + projectItem.sort.toString()).slice(-2),
+        description: projectItem.description,
+        repository: projectItem.repository,
+        website: projectItem.website
+      })) || []);
+  }, []);
+
 
   return (
     <div css={style}>
       <Container marginTop="6rem">
         {
-          projects.map(({
+          data && data.map(({
             name,
             projectId,
             description,
             website,
             repository
-          }, index) => (
+          }) => (
             <div key={projectId} className="container">
               <div className="project-card-container">
                 <ProjectDetails

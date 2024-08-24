@@ -4,7 +4,7 @@ import { Header } from "@kspr-dev/common/components/Header";
 import { useSSE } from "@kspr-dev/use-sse";
 import axios from "axios";
 
-const API = "https://dsa.kspr.dev/list/lastArticle";
+const API = "https://cms.kspr.dev/items/LastArticles";
 
 type ArticleProps = {
   "title": string,
@@ -14,10 +14,16 @@ type ArticleProps = {
   "publicationDate": string
 }
 
+type LastArticleResponse = {
+  data: { 
+    items: ArticleProps[]
+  }
+}
+
 export const Articles = () => {
 
   const [data] = useSSE<ArticleProps[]>(() => {
-    return axios.get(API).then((res) => res.data);
+    return axios.get<LastArticleResponse>(API).then((res) => res.data?.data?.items || []);
   }, []);
 
   return (

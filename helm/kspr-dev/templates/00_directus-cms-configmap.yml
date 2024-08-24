@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: directus-cms-configmap
+  namespace: default
+data:
+  DB_CLIENT: {{ quote .Values.DIRECTUS_DB_CLIENT }}
+  DB_FILENAME: {{ quote .Values.DIRECTUS_DB_FILENAME }}
+  WEBSOCKETS_ENABLED: {{ quote .Values.DIRECTUS_WEBSOCKETS_ENABLED }}
+  CORS_ENABLED: {{ quote .Values.DIRECTUS_CORS_ENABLED }}
+  CORS_ORIGIN: {{ quote .Values.DIRECTUS_CORS_ORIGIN }}

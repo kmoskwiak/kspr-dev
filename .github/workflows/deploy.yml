@@ -46,6 +46,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    environment: prod
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -58,6 +59,15 @@ jobs:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         run: mkdir -p ~/.kube/; echo "$KUBE_CONFIG" >> ~/.kube/config
       - name: Deploy
-        run: sh ./k8s/deploy.sh
+        env:
+            DIRECTUS_CORS_ENABLED: ${{ vars.DIRECTUS_CORS_ENABLED }}
+            DIRECTUS_CORS_ORIGIN: ${{ vars.DIRECTUS_CORS_ORIGIN }}
+            DIRECTUS_DB_CLIENT: ${{ vars.DIRECTUS_DB_CLIENT }}
+            DIRECTUS_DB_FILENAME: ${{ vars.DIRECTUS_DB_FILENAME }}
+            DIRECTUS_WEBSOCKETS_ENABLED: ${{ vars.DIRECTUS_WEBSOCKETS_ENABLED }}
+            DIRECTUS_SECRET: ${{ secrets.DIRECTUS_SECRET }}
+            DIRECTUS_ADMIN_EMAIL: ${{ secrets.DIRECTUS_ADMIN_EMAIL }}
+            DIRECTUS_ADMIN_PASSWORD: ${{ secrets.DIRECTUS_ADMIN_PASSWORD }}
+        run: source ./helm/upgrade.sh
       
      

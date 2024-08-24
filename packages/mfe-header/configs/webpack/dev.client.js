@@ -10,5 +10,6 @@ module.exports = webpackConfig({
     moduleName: "kspr_dev_header",
     moduleExposes: {
       './Header': './src/Header',
+      './ReSeHeader': './src/ReSeHeader',
     },
 });

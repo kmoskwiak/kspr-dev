@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: directus-cms-deployment
+  namespace: default
+  labels:
+    name: directus-cms-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: directus-cms-deployment
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: directus-cms-deployment
+    spec:
+      volumes:
+        - name: database-volume
+          hostPath:
+            path: /home/app/directus/database
+            type: DirectoryOrCreate
+        - name: uploads-volume
+          hostPath:
+            path: /home/app/directus/uploads
+            type: DirectoryOrCreate
+        - name: extensions-volume
+          hostPath:
+            path: /home/app/directus/extensions
+            type: DirectoryOrCreate
+      containers:
+        - name: directus
+          image: directus/directus:11.0.2
+          ports:
+            - name: http
+              containerPort: 8055
+              protocol: TCP
+          env:
+            - name: SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: directus-cms-secrets
+                  key: SECRET
+            - name: ADMIN_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: directus-cms-secrets
+                  key: ADMIN_EMAIL
+            - name: ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: directus-cms-secrets
+                  key: ADMIN_PASSWORD
+            - name: DB_CLIENT
+              valueFrom:
+                configMapKeyRef:
+                  name: directus-configmap
+                  key: DB_CLIENT
+            - name: DB_FILENAME
+              valueFrom:
+                configMapKeyRef:
+                  name: directus-cms-configmap
+                  key: DB_FILENAME
+            - name: WEBSOCKETS_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: directus-cms-configmap
+                  key: WEBSOCKETS_ENABLED
+            - name: CORS_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: directus-cms-configmap
+                  key: CORS_ENABLED
+            - name: CORS_ORIGIN
+              valueFrom:
+                configMapKeyRef:
+                  name: directus-cms-configmap
+                  key: CORS_ORIGIN
+          resources: {}
+          volumeMounts:
+            - name: database-volume
+              mountPath: /directus/database
+            - name: uploads-volume
+              mountPath: /directus/uploads
+            - name: extensions-volume
+              mountPath: /directus/extensions

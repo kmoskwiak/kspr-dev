@@ -1,27 +1,37 @@
-import { ProjectCard } from "@kspr-dev/common/components/ProjectCard";
 import { ConicGradient } from "@kspr-dev/common/components/ConicGradient";
 import { Container } from "@kspr-dev/common/components/Container";
 import { Header } from "@kspr-dev/common/components/Header";
+import { ProjectCard } from "@kspr-dev/common/components/ProjectCard";
+import { useSSE } from "@kspr-dev/use-sse";
+import axios from "axios";
 import { style } from "./CurrentlyWorkingOn.css";
 
+const API = "https://cms.kspr.dev/items/CurrentlyWorkinOn";
+
+type ProjectItem = {
+  name: string,
+  description: string,
+  projectId: string,
+  repository: string,
+  website: string
+}
+
+type ProjectResponse = {
+  data:  { items: ProjectItem[] }
+}
+
 export const Projects = () => {
-
-  const projects = [
-    {
-      name: 'useSSE',
-      projectId: '01',
-      description: 'use Server-Side Effect in React SSR app',
-      website: "https://kspr.dev/use-sse/",
-      repository: "https://github.com/kmoskwiak/useSSE"
-    },
-    {
-      name: 'muchconf',
-      projectId: '02',
-      description: 'Wow! So much configuration, so many sources!',
-      repository: "https://github.com/kmoskwiak/muchconf"
-    }
-  ];
-
+  const [projects] = useSSE<ProjectItem[]>(() => {
+    return axios
+      .get<ProjectResponse>(API)
+      .then((res) => res.data?.data?.items?.map((projectItem, index) => ({
+        name: projectItem.name,
+        projectId: ('0' + index.toString()).slice(-2),
+        description: projectItem.description,
+        repository: projectItem.repository,
+        website: projectItem.website
+      })) || []);
+  }, []);
 
   return (
     <>
@@ -33,7 +43,7 @@ export const Projects = () => {
       <div css={style}>
 
         {
-          projects.map(({
+          projects && projects.map(({
             name,
             projectId,
             description,

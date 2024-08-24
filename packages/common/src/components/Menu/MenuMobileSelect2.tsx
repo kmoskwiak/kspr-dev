@@ -1,8 +1,8 @@
-import { styles } from './MenuMobileSelect2.css';
-import { MenuProps } from './Menu.type';
 import { useState } from 'react';
-import { MenuIcon } from './MenuIcon';
 import { Link } from 'react-router-dom';
+import { MenuProps } from './Menu.type';
+import { MenuIcon } from './MenuIcon';
+import { styles } from './MenuMobileSelect2.css';
 
 export const MenuMobileSelect = ({
     links,
@@ -26,7 +26,7 @@ export const MenuMobileSelect = ({
                     }}>
                         {links.map((link, index) => (
                             <Link
-                                arial-label={link.title}
+                                arial-label={link.name}
                                 className='link'
                                 key={link.url}
                                 to={link.url}
@@ -35,7 +35,7 @@ export const MenuMobileSelect = ({
                                 <span className='text'
 
                                 >
-                                    {link.title}
+                                    {link.name}
                                 </span>
                             </Link>
                         ))}

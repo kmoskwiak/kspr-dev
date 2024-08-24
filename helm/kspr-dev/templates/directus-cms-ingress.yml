@@ -1,25 +1,24 @@
-kind: Ingress
 apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: "kspr-dev-mfs"
+  name: directus-cms-ingress
   namespace: default
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-
+    nginx.ingress.kubernetes.io/enable-cors: 'true'
 spec:
+  tls:
+    - hosts:
+        - cms.kspr.dev
+      secretName: directus-cms-tls
   rules:
-    - host: mfs.kspr.dev
+    - host: cms.kspr.dev
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: kspr-dev-mfs
+                name: directus-cms-service
                 port:
                   number: 80
-      tls:
-      - hosts:
-        - mfs.kspr.dev
-        secretName: kspr-dev-mfs-tls
-                  

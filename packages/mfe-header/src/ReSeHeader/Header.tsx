@@ -1,10 +1,10 @@
 import { Container } from "@kspr-dev/common/components/Container";
-import { HeadBar } from "@kspr-dev/common/components/HeadBar";
 import { Menu } from "@kspr-dev/common/components/Menu";
+import { ReSeHeadBar } from "@kspr-dev/common/components/ReSeHeadBar";
 import { useSSE } from "@kspr-dev/use-sse";
 import axios from "axios";
 
-const API = "https://cms.kspr.dev/items/MainMenu";
+const API = "https://cms.kspr.dev/items/ReSeMenu";
 
 type MenuItem = {
   "name": string,
@@ -26,9 +26,9 @@ export const Header = () => {
 
   return (
     <Container marginTop="3rem" zIndex="999">
-      <HeadBar>
+      <ReSeHeadBar>
         {data && <Menu links={data} />}
-      </HeadBar>
+      </ReSeHeadBar>
     </Container>
   );
 };

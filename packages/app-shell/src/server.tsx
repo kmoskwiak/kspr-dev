@@ -1,12 +1,12 @@
 import express from "express";
-import path from "path";
 import fs from "fs";
-import { StaticRouter } from "react-router-dom/server";
-import { Helmet } from "react-helmet";
 import morgan from "morgan";
-import { Router } from "./shell/routes/Router";
+import path from "path";
 import { renderToPipeableStream } from "react-dom/server";
+import { Helmet } from "react-helmet";
+import { StaticRouter } from "react-router-dom/server";
 import { globalStyles } from "./shell/global.css";
+import { Router } from "./shell/routes/Router";
 
 process.on("unhandledRejection", function (err, promise) {
   console.error(
@@ -40,7 +40,7 @@ app.use(morgan("combined"));
 
 app.use("/", async (req, res, next) => {
 
-  if (!["/", "/articles", "/projects", "/loading"].includes(req.path)) {
+  if (!["/", "/articles", "/projects", "/loading", "/re/se"].includes(req.path)) {
     return next();
   }
 

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { MenuMobileSelect } from './MenuMobileSelect2';
 import { MenuDesktop } from './MenuDesktop';
+import { MenuMobileSelect } from './MenuMobileSelect2';
 
 interface Link {
-  title: string;
+  name: string;
   url: string;
 }
 

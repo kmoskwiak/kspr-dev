@@ -11,12 +11,12 @@ export const MenuDesktop = ({
         <div {...props} css={styles}>
             {links.map((link) => (
                 <Link
-                    arial-label={link.title}
+                    arial-label={link.name}
                     className='link'
                     key={link.url}
                     to={link.url}>
                     <span className='text'>
-                        {link.title}
+                        {link.name}
                     </span>
                 </Link>
             ))}
