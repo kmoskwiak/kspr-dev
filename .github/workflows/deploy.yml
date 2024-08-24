@@ -54,12 +54,14 @@ jobs:
         with:
           version: 'latest'
         id: install
-      - name: Load kube config
-        env:
-          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-        run: mkdir -p ~/.kube/; echo "$KUBE_CONFIG" >> ~/.kube/config
-      - name: Deploy
-        env:
+      - name: 'Deploy'
+        uses: 'deliverybot/helm@v1'
+        with:
+          release: 'kspr-dev'
+          namespace: 'default'
+          chart: './helm/kspr-dev'
+          token: '${{ secrets.GHCR_KEY }}'
+          values: |
             DIRECTUS_CORS_ENABLED: ${{ vars.DIRECTUS_CORS_ENABLED }}
             DIRECTUS_CORS_ORIGIN: ${{ vars.DIRECTUS_CORS_ORIGIN }}
             DIRECTUS_DB_CLIENT: ${{ vars.DIRECTUS_DB_CLIENT }}
@@ -68,6 +70,7 @@ jobs:
             DIRECTUS_SECRET: ${{ secrets.DIRECTUS_SECRET }}
             DIRECTUS_ADMIN_EMAIL: ${{ secrets.DIRECTUS_ADMIN_EMAIL }}
             DIRECTUS_ADMIN_PASSWORD: ${{ secrets.DIRECTUS_ADMIN_PASSWORD }}
-        run: source ./helm/upgrade.sh
+        env:
+          KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
       
      
