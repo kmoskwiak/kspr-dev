@@ -55,7 +55,7 @@ spec:
             - name: DB_CLIENT
               valueFrom:
                 configMapKeyRef:
-                  name: directus-configmap
+                  name: directus-cms-configmap
                   key: DB_CLIENT
             - name: DB_FILENAME
               valueFrom:
