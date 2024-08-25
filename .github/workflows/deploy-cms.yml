@@ -29,7 +29,8 @@ jobs:
           
       - name: 'Deploy'
         run: |
-          helm upgrade --install \ 
+          helm upgrade kspr-dev-cms ./helm/kspr-dev-cms \
+            --install \ 
             --set DIRECTUS_CORS_ENABLED="${{ vars.DIRECTUS_CORS_ENABLED }}" \
             --set DIRECTUS_CORS_ORIGIN="${{ vars.DIRECTUS_CORS_ORIGIN }}" \
             --set DIRECTUS_DB_CLIENT="${{ vars.DIRECTUS_DB_CLIENT }}" \
@@ -39,5 +40,4 @@ jobs:
             --set DIRECTUS_ADMIN_EMAIL="${{ secrets.DIRECTUS_SECRET }}" \
             --set DIRECTUS_ADMIN_PASSWORD="${{ secrets.DIRECTUS_ADMIN_PASSWORD }}" \
             --namespace ${{ vars.K8S_NAMESPACE }} \
-            --create-namespace \
-            kspr-dev-cms ./helm/kspr-dev-cms
+            --create-namespace
