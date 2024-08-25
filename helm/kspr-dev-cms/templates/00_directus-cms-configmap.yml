@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: directus-cms-configmap
-  namespace: default
+  namespace: {{ .Release.Namespace }}
 data:
   DB_CLIENT: {{ quote .Values.DIRECTUS_DB_CLIENT }}
   DB_FILENAME: {{ quote .Values.DIRECTUS_DB_FILENAME }}

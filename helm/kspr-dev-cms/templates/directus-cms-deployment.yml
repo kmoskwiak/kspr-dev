@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: directus-cms-deployment
-  namespace: default
+  namespace: {{ .Release.Namespace }}
   labels:
     name: directus-cms-deployment
 spec:
