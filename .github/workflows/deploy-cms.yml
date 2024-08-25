@@ -44,6 +44,6 @@ jobs:
           --set DIRECTUS_SECRET=$DIRECTUS_SECRET \
           --set DIRECTUS_ADMIN_EMAIL=$DIRECTUS_ADMIN_EMAIL \
           --set DIRECTUS_ADMIN_PASSWORD=$DIRECTUS_ADMIN_PASSWORD \
-          kspr-dev-cms ./helm/kspr-dev-cms \
-            --namespace ${{ vars.K8S_NAMESPACE }} \
-            --create-namespace
+          --namespace ${{ vars.K8S_NAMESPACE }} \
+          --create-namespace \
+          kspr-dev-cms ./helm/kspr-dev-cms

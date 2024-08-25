@@ -59,8 +59,8 @@ jobs:
           KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
         run: |
           helm upgrade --install \ 
-          kspr-dev ./helm/kspr-dev \
-            --namespace ${{ vars.K8S_NAMESPACE }} \
-            --create-namespace
+          --namespace ${{ vars.K8S_NAMESPACE }} \
+          --create-namespace \
+          kspr-dev ./helm/kspr-dev
       
      
