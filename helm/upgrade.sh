@@ -7,4 +7,5 @@ helm upgrade --install \
 --set DIRECTUS_SECRET=$DIRECTUS_SECRET \
 --set DIRECTUS_ADMIN_EMAIL=$DIRECTUS_ADMIN_EMAIL \
 --set DIRECTUS_ADMIN_PASSWORD=$DIRECTUS_ADMIN_PASSWORD \
+--namespace production \
 kspr-dev ./helm/kspr-dev
