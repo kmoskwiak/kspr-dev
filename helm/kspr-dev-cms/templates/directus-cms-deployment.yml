@@ -30,7 +30,7 @@ spec:
             path: /home/app/directus/extensions
             type: DirectoryOrCreate
       containers:
-        - name: directus
+        - name: directus-cms-deployment
           image: directus/directus:11.0.2
           ports:
             - name: http
@@ -77,7 +77,6 @@ spec:
                 configMapKeyRef:
                   name: directus-cms-configmap
                   key: CORS_ORIGIN
-          resources: {}
           volumeMounts:
             - name: database-volume
               mountPath: /directus/database
