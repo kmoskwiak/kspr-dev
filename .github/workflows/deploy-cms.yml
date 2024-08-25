@@ -30,7 +30,7 @@ jobs:
       - name: 'Deploy'
         run: |
           helm upgrade kspr-dev-cms ./helm/kspr-dev-cms \
-            --install \ 
+            --install \
             --set DIRECTUS_CORS_ENABLED="${{ vars.DIRECTUS_CORS_ENABLED }}" \
             --set DIRECTUS_CORS_ORIGIN="${{ vars.DIRECTUS_CORS_ORIGIN }}" \
             --set DIRECTUS_DB_CLIENT="${{ vars.DIRECTUS_DB_CLIENT }}" \
