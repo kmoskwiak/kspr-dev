@@ -1,0 +1,46 @@
+name: DeployCMS
+
+on:
+  repository_dispatch:
+    types: [dispatcher-trigger-digital-cicd]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'production-cms'
+    
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4.2.0
+          
+      - name: 'Deploy'
+        env:
+          DIRECTUS_CORS_ENABLED: ${{ vars.DIRECTUS_CORS_ENABLED }}
+          DIRECTUS_CORS_ORIGIN: ${{ vars.DIRECTUS_CORS_ORIGIN }}
+          DIRECTUS_DB_CLIENT: ${{ vars.DIRECTUS_DB_CLIENT }}
+          DIRECTUS_DB_FILENAME: ${{ vars.DIRECTUS_DB_FILENAME }}
+          DIRECTUS_WEBSOCKETS_ENABLED: ${{ vars.DIRECTUS_WEBSOCKETS_ENABLED }}
+          DIRECTUS_SECRET: ${{ secrets.DIRECTUS_SECRET }}
+          DIRECTUS_ADMIN_EMAIL: ${{ secrets.DIRECTUS_ADMIN_EMAIL }}
+          DIRECTUS_ADMIN_PASSWORD: ${{ secrets.DIRECTUS_ADMIN_PASSWORD }}
+          KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
+        run: |
+          helm upgrade --install \ 
+          --set DIRECTUS_CORS_ENABLED=$DIRECTUS_CORS_ENABLED \
+          --set DIRECTUS_CORS_ORIGIN=$DIRECTUS_CORS_ORIGIN \
+          --set DIRECTUS_DB_CLIENT=$DIRECTUS_DB_CLIENT \
+          --set DIRECTUS_DB_FILENAME=$DIRECTUS_DB_FILENAME \
+          --set DIRECTUS_WEBSOCKETS_ENABLED=$DIRECTUS_WEBSOCKETS_ENABLED \
+          --set DIRECTUS_SECRET=$DIRECTUS_SECRET \
+          --set DIRECTUS_ADMIN_EMAIL=$DIRECTUS_ADMIN_EMAIL \
+          --set DIRECTUS_ADMIN_PASSWORD=$DIRECTUS_ADMIN_PASSWORD \
+          kspr-dev-cms ./helm/kspr-dev-cms \
+            --namespace ${{ vars.K8S_NAMESPACE }} \
+            --create-namespace
