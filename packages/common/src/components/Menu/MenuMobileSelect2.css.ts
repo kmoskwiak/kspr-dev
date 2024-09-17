@@ -40,7 +40,6 @@ export const styles = css`
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: 2px 2px 10px -2px rgba(0, 0, 0, 0.5);
         border: none;
         outline: none;
 
@@ -63,11 +62,9 @@ export const styles = css`
             justify-content: end;
             margin-bottom: 0.4rem;
             margin-right: 0.5rem;
-            background-color: ${theme.one};
             text-decoration: none;
             font-family: ${theme.fontMain};
             color: ${theme.two};
-            box-shadow: 1px 1px 5px -2px rgba(0, 0, 0, 0.5);
         }
     }
 

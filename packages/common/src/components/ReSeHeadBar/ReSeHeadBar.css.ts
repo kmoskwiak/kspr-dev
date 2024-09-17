@@ -34,6 +34,7 @@ export const styles = css`
     font-weight: 100;
     font-size: 2rem;
     display: inline-block;
+    text-decoration: none;
   }
 
   .menu {
