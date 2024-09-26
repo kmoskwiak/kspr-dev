@@ -1,8 +1,6 @@
 name: DeployCMS
 
 on:
-  repository_dispatch:
-    types: [dispatcher-trigger-digital-cicd]
   workflow_dispatch:
     inputs:
       environment:
