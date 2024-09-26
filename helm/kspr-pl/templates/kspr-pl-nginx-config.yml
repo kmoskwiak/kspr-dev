@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kspr-pl-nginx-conf
+  namespace: {{ .Release.Namespace }}
+data:
+  nginx.conf: |
+    user nginx;
+    worker_processes  1;
+    events {
+      worker_connections  10240;
+    }
+    http {
+      server {
+        listen  80;
+        server_name www.kspr.pl kspr.pl;
+        return 301 $scheme://kspr.dev$request_uri;
+      }
+    }
+

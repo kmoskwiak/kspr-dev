@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kspr-pl-deployment
+  namespace: {{ .Release.Namespace }}
+  labels:
+    name: kspr-pl-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: kspr-pl-deployment
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: kspr-pl-deployment
+    spec:
+      volumes:
+        - name: kspr-pl-nginx-conf
+          configMap:
+            name: kspr-pl-nginx-conf
+            items:
+              - key: nginx.conf
+                path: nginx.conf
+            defaultMode: 420
+      containers:
+        - name: kspr-pl-deployment
+          image: nginx:stable-alpine
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - name: kspr-pl-nginx-conf
+              readOnly: true
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cdn-kspr-dev-deployment
+  namespace: {{ .Release.Namespace }}
+  labels:
+    name: cdn-kspr-dev-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: cdn-kspr-dev-deployment
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: cdn-kspr-dev-deployment
+    spec:
+      volumes:
+        - name: cdn
+          hostPath:
+            path: /home/app/cdn-kspr-dev/files
+            type: Directory
+      containers:
+        - name: cdn-kspr-dev-deployment
+          image: nginx:stable-alpine
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - name: cdn
+              mountPath: /usr/share/nginx/html

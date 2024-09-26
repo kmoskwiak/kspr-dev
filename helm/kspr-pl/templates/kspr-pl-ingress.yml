@@ -1,30 +1,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: kspr-dev-shell-ingress
+  name: kspr-pl-ingress
   namespace: {{ .Release.Namespace }}
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   tls:
     - hosts:
-        - kspr.dev
-      secretName: kspr-dev-shell-tls
+        - kspr.pl
+      secretName: kspr-pl-tls
   rules:
-    - host: kspr.dev
+    - host: kspr.pl
       http:
         paths:
-          - path: /use-sse
-            pathType: Prefix
-            backend:
-              service:
-                name: cdn-kspr-service
-                port:
-                  number: 80
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: kspr-dev-shell-service
+                name: kspr-pl-service
                 port:
                   number: 80
