@@ -1,0 +1,25 @@
+{
+    "name": "@kspr-dev/mfe-rese",
+    "version": "0.1.0",
+    "description": "kspr.dev re/se microfrontend",
+    "author": "Kasper Moskwiak",
+    "main": "./src/entry.tsx",
+    "scripts": {
+        "build": "webpack --config=configs/webpack/prod.js",
+        "build:server": "webpack --config=configs/webpack/server.js",
+        "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
+        "start": "concurrently --kill-others \"npm run start:client\" \"npm run start:server\"",
+        "start:server": "webpack serve --config=configs/webpack/dev.server.js",
+        "start:client": "webpack serve --config=configs/webpack/dev.client.js",
+        "start:dev": "webpack serve --config=configs/webpack/dev.js",
+        "start:prod": "npm run build && node express.js",
+        "test": "jest --coverage --watchAll --config=configs/jest.json",
+        "build:prod": "concurrently \"npm run build:prod:client\" \"npm run build:prod:server\"",
+        "build:prod:client": "webpack --config=configs/webpack/prod.client.js",
+        "build:prod:server": "webpack --config=configs/webpack/prod.server.js"
+    },
+    "dependencies": {
+        "@directus/sdk": "^17.0.1",
+        "@kspr-dev/common": "*"
+    }
+}

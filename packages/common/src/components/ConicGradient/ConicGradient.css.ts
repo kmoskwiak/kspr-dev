@@ -1,9 +1,10 @@
-import { css } from '@emotion/react';
-import { theme } from '../../theme';
+import { css, Theme } from '@emotion/react';
+import { ConicGradientProps } from './ConicGradient.type';
 
-export const styles = css`
-  width: 400px;
-  height: 400px;
+export const styles = ({ size = "400px", rotation = 0, color }: ConicGradientProps, theme: Theme) => css`
+  width: ${size};
+  height: ${size};
   border-radius: 100%;
-  background-image: conic-gradient(from -90deg at 50% 60%, ${theme.blue}, ${theme.one});
+  transform: rotate(${rotation}deg);
+  background-image: conic-gradient(from -90deg at 50% 60%, ${color ?? "var(--colors-neon-blue)"}, transparent);
 `

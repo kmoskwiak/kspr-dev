@@ -1,31 +1,22 @@
-import React from 'react';
+import { useTheme } from '@emotion/react';
 import { styles } from './Header.css';
+import { HeaderProps } from './Header.type';
 
-interface HeaderProps {
-  /**
-   * Text of header
-   */
-  children: React.ReactNode;
-  outline?: boolean;
-  font?: 'mono' | 'sans-serif';
-}
-
-/**
- * Primary UI component for user interaction
- */
 export const Header = ({
   children,
-  font,
-  outline,
+  el = 'h2',
   ...props
 }: HeaderProps) => {
+  const theme = useTheme();
+  const fontClass = props.font ? `font-style-${props.font}` : 'font-style-mono';
+  const outlineClass = props.outline ? 'title-variant-outline' : 'title-variant-fill';
+  const gradientClass = props.gradient ? 'title-gradient' : '';
 
-  const fontClass = font ? `font-style-${font}` : 'font-style-mono';
-  const outlineClass = outline ? 'title-variant-outline' : 'title-variant-fill';
+  const HeadingTag = el;
 
   return (
-    <h2 css={styles} className={`${fontClass} ${outlineClass}`}>
+    <HeadingTag css={styles(props, theme)} className={`${fontClass} ${outlineClass} ${gradientClass}`}>
       {children}
-    </h2>
+    </HeadingTag>
   );
 };

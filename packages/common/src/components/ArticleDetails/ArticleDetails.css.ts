@@ -1,9 +1,8 @@
-import { css } from '@emotion/react';
-import { theme } from '../../theme';
+import { css, Theme } from '@emotion/react';
 
-export const styles = css`
-  color: ${theme.two};
-  font-family: ${theme.fontMain};
+export const styles = (theme: Theme) => css`
+  color: var(--colors-text);
+  font-family: ${theme.font.main};
   font-size: 1rem;
 
   .container {

@@ -1,7 +1,8 @@
 import React from 'react';
-import { styles } from './HeadBar.css';
-import { Logo } from '../Logo';
 import { Card } from '../Card';
+import { Logo } from '../Logo';
+import { ThemeButton } from '../ThemeButton';
+import { styles } from './HeadBar.css';
 
 interface HeadBarProps {
   children: React.ReactNode;
@@ -22,6 +23,9 @@ export const HeadBar = ({
           <a className='logo' href="/">
             <Logo />
           </a>
+          <div className='theme-button-container'>
+            <ThemeButton />
+          </div>
           <div className='menu'>
             {children}
           </div>

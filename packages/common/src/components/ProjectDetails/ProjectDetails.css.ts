@@ -1,9 +1,8 @@
-import { css } from '@emotion/react';
-import { theme } from '../../theme';
+import { css, Theme } from '@emotion/react';
 
-export const styles = css`
-  color: ${theme.two};
-  font-family: ${theme.fontMono};
+export const styles = (theme: Theme) => css`
+  color: var(--colors-text);
+  font-family: ${theme.font.mono};
   font-size: 1rem;
 
   .container {
@@ -15,7 +14,7 @@ export const styles = css`
   }
 
   .counter {
-    color: ${theme.blue};
+    color: var(--colors-blue);
     grid-area: counter;
     padding-top: 0.5rem;
     padding-right: 2rem;
@@ -43,7 +42,7 @@ export const styles = css`
         font-weight: 400;
         padding: 0px;
         border-radius: 3px;
-        color: ${theme.two};
+        color: var(--colors-text);
         cursor: pointer;
         text-decoration: none;
         

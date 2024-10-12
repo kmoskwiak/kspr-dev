@@ -36,6 +36,7 @@ module.exports = merge(commonConfig, {
         kspr_dev_header: "kspr_dev_header@https://mfs.kspr.dev/kspr_dev_header/server/remoteEntry.js?v=" + buildTimestamp,
         kspr_dev_projects: "kspr_dev_projects@https://mfs.kspr.dev/kspr_dev_projects/server/remoteEntry.js?v=" + buildTimestamp,
         kspr_dev_footer: "kspr_dev_footer@https://mfs.kspr.dev/kspr_dev_footer/server/remoteEntry.js?v=" + buildTimestamp,
+        kspr_dev_rese: "kspr_dev_rese@https://mfs.kspr.dev/kspr_dev_rese/server/remoteEntry.js?v=" + buildTimestamp,
       },
       shared: {
         react: {singleton: true, requiredVersion: common.dependencies['react']}, 
@@ -48,7 +49,9 @@ module.exports = merge(commonConfig, {
           requiredVersion: common.dependencies['react-dom']
         },
         "react-router": {singleton: true, requiredVersion: common.dependencies['react-router']},
-        "react-router-dom": {singleton: true, requiredVersion: common.dependencies['react-router-dom']}
+        "react-router-dom": {singleton: true, requiredVersion: common.dependencies['react-router-dom']},
+        "@kspr-dev/common": { singleton: true, requiredVersion: common.dependencies['@kspr-dev/common']},
+        "@emotion/react": { singleton: true, requiredVersion: common.dependencies['@emotion/react']}
       }
     }),
     new ExternalTemplateRemotesPlugin(),

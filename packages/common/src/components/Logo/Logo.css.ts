@@ -1,12 +1,11 @@
-import { css } from '@emotion/react';
-import { theme } from '../../theme';
+import { css, Theme } from '@emotion/react';
 
-export const styles = css`
+export const styles = (theme: Theme) => css`
   position: relative;
   display: inline-block;
   transform: scale(0.7);
-  font-family: ${theme.fontMain};
-  color: ${theme.two};
+  font-family: ${theme.font.main};
+  color: var(--colors-text);
 
   @media screen and (min-width: 1260px) {
     transform: scale(1);
@@ -17,9 +16,8 @@ export const styles = css`
     --header-shadow-offset: 0.5px;
     --header-shadow-negative-offset: -0.5px;
 
-    color: ${theme.purple};
-    //text-shadow: var(--header-shadow-offset) 0 var(--header-shadow-spread) ${theme.two}, 0 var(--header-shadow-offset) var(--header-shadow-spread) ${theme.two}, var(--header-shadow-negative-offset) 0 var(--header-shadow-spread) ${theme.two}, 0px var(--header-shadow-negative-offset) var(--header-shadow-spread) ${theme.two};
-    background: -webkit-linear-gradient(0deg, ${theme.blue}, ${theme.purple});
+    color: var(--colors-purple);
+    background: -webkit-linear-gradient(0deg, var(--colors-blue), var(--colors-purple));
     background-clip: text;
     -webkit-background-clip: text;
     -moz-background-clip: text;

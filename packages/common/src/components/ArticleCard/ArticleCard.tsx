@@ -1,6 +1,7 @@
-import { styles } from './ArticleCard.css';
+import { useTheme } from '@emotion/react';
 import { ArticleDetails } from '../ArticleDetails';
 import { Image } from '../Image';
+import { styles } from './ArticleCard.css';
 
 interface ArticleCardProps {
   title: string;
@@ -25,11 +26,11 @@ export const ArticleCard = ({
   href,
   ...props
 }: ArticleCardProps) => {
-
+  const theme = useTheme();
   const compactClassName = compact ? 'compact' : '';
 
   return (
-    <a {...props} href={href} css={styles({ compact })} className={compactClassName}>
+    <a {...props} href={href} css={styles({ compact }, theme)} className={compactClassName}>
       <div className='image-wrapper'>
         <Image src={imageSrc} alt={title} square />
       </div>

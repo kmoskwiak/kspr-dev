@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
 import { ArticleDetails } from './ArticleDetails';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -11,7 +10,7 @@ const meta = {
     layout: 'centered',
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
+  tags: [],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
 

@@ -1,3 +1,4 @@
+import { useTheme } from '@emotion/react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MenuProps } from './Menu.type';
@@ -8,6 +9,7 @@ export const MenuMobileSelect = ({
     links,
     ...props
 }: MenuProps) => {
+    const theme = useTheme();
     const [active, setActive] = useState(false);
 
     const activate = () => {
@@ -15,7 +17,7 @@ export const MenuMobileSelect = ({
     }
 
     return (
-        <div {...props} css={styles} className={`${active ? 'active' : ''}`}>
+        <div {...props} css={styles(theme)} className={`${active ? 'active' : ''}`}>
             <div className='menu-position'>
                 <button onClick={activate} className='menu-bubble' aria-label='Menu'>
                     <MenuIcon />

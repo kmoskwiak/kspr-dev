@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import { theme } from '../../theme';
 
 export const styles = css`
   width: 100%;
@@ -7,21 +6,23 @@ export const styles = css`
   
   .container {
     display: grid;
-    grid-template-columns: max-content auto;
+    grid-template-columns: max-content auto max-content;
     grid-template-rows: 1fr;
     gap: 3rem;
     align-items: center;
+    align-content: center;
     justify-content: space-between;
     align-items: stretch;
-  }
-
-  .logo {
-    //grid-area: logo;
   }
 
   .menu {
     display: grid;
     align-items: stretch;
-    //grid-area: menu;
+  }
+
+  .theme-button-container {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
   }
 `;

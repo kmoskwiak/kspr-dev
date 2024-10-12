@@ -1,7 +1,6 @@
-import { css } from '@emotion/react';
-import { theme } from '../../theme';
+import { css, Theme } from '@emotion/react';
 
-export const styles = ({ compact = false }: { compact: boolean }) => css`
+export const styles = ({ compact = false }: { compact: boolean }, theme: Theme) => css`
   text-decoration: none;
   display: grid;
   grid-area: image;

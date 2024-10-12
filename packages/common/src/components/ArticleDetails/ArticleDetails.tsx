@@ -1,5 +1,6 @@
-import { styles } from './ArticleDetails.css';
+import { useTheme } from '@emotion/react';
 import { Header } from '../Header';
+import { styles } from './ArticleDetails.css';
 
 interface ArticleDetailsProps {
   title: string;
@@ -18,9 +19,9 @@ export const ArticleDetails = ({
   date,
   ...props
 }: ArticleDetailsProps) => {
-
+  const theme = useTheme();
   return (
-    <div {...props} css={styles}>
+    <div {...props} css={styles(theme)} data-theme={theme.name}>
       <div className='container'>
         <div className='content'>
           <div className="details">

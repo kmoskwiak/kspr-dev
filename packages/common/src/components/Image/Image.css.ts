@@ -1,11 +1,10 @@
-import { css } from '@emotion/react';
-import { theme } from '../../theme';
+import { css, Theme } from '@emotion/react';
 
-export const styles = css`
-  border: 0px solid ${theme.two};
+export const styles = (theme: Theme) => css`
+  border: 0px solid var(--colors-text);
   padding: 0.3rem;
   border-radius: 0.6rem;
-  background-color: ${theme.one};
+  background-color: var(--colors-background);
   overflow: hidden;
   position: relative;
 

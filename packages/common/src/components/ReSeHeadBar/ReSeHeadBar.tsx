@@ -1,4 +1,6 @@
+import { useTheme } from '@emotion/react';
 import React from 'react';
+import { Theme } from '../../theme/ThemeProvider';
 import { styles } from './ReSeHeadBar.css';
 
 interface ReSeHeadBarProps {
@@ -12,9 +14,10 @@ export const ReSeHeadBar = ({
   children,
   ...props
 }: ReSeHeadBarProps) => {
-
+  const theme = useTheme();
   return (
-    <div css={styles}>
+    <Theme>
+      <div css={styles(theme)}>
         <div className='container'>
           <a className='logo' href="/re/se">
             re/se
@@ -23,6 +26,7 @@ export const ReSeHeadBar = ({
             {children}
           </div>
         </div>
-    </div>
+      </div>
+    </Theme>
   );
 };

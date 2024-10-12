@@ -1,9 +1,8 @@
-import { css } from '@emotion/react';
-import { theme } from '../../theme';
+import { css, Theme } from '@emotion/react';
 
-export const styles = css`
-  font-family: ${theme.fontMain};
-  color: ${theme.two};
+export const styles = (theme: Theme) => css`
+  font-family: ${theme.font.main};
+  color: var(--colors-text);
   display: none;
 
   @media (min-width: ${theme.breakpoints.sm}) {
@@ -17,7 +16,7 @@ export const styles = css`
 
 
   .link {
-    color: ${theme.two};
+    color: var(--colors-text);
     text-decoration: none;
     display: grid;
     align-items: center;
@@ -40,7 +39,7 @@ export const styles = css`
     }
 
     &:visited {
-      color: ${theme.two};
+      color: var(--colors-text);
     }
   }
 `

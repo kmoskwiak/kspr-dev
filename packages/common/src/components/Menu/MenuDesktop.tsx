@@ -1,3 +1,4 @@
+import { useTheme } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { styles } from './Menu.css';
 import { MenuProps } from './Menu.type';
@@ -6,9 +7,9 @@ export const MenuDesktop = ({
     links,
     ...props
 }: MenuProps) => {
-
+    const theme = useTheme();
     return (
-        <div {...props} css={styles}>
+        <div {...props} css={styles(theme)}>
             {links.map((link) => (
                 <Link
                     arial-label={link.name}

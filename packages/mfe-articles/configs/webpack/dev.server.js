@@ -1,15 +1,15 @@
+import webpackConfig from '@kspr-dev/common/webpack/config';
+import { resolve } from "path";
 
-const { resolve } = require("path");
-const webpackConfig = require('@kspr-dev/common/webpack/config')
-
-module.exports = webpackConfig({
+export default webpackConfig({
     mode: "development",
-    context: resolve(__dirname, "../../"),
+    context: resolve(import.meta.dirname, "../../"),
     envType: "server",
     devPort: 3014,
     moduleName: "kspr_dev_articles",
     moduleExposes: {
       './LastArticle': './src/LastArticle',
       './Articles': './src/Articles',
+      './SingleArticle': './src/SingleArticle',
     },
 });

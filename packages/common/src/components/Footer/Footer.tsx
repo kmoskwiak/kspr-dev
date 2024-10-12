@@ -1,3 +1,4 @@
+import { useTheme } from "@emotion/react";
 import { styles } from './Footer.css';
 
 interface FooterProps {
@@ -8,9 +9,9 @@ export const Footer = ({
   avatar,
   ...props
 }: FooterProps) => {
-
+  const theme = useTheme();
   return (
-    <div css={styles}>
+    <div css={styles(theme)}>
       {
         avatar && (
           <div className="avatarContainer">

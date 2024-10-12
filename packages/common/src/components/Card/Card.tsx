@@ -1,3 +1,4 @@
+import { useTheme } from '@emotion/react';
 import React from 'react';
 import { styles } from './Card.css';
 
@@ -15,9 +16,9 @@ export const Card = ({
   children,
   ...props
 }: CardProps) => {
-
+  const theme = useTheme();
   return (
-    <div {...props} css={styles}>
+    <div {...props} css={styles(theme)}>
       {children}
     </div>
   );

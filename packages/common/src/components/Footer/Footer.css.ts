@@ -1,22 +1,21 @@
-import { css } from "@emotion/react";
-import { theme } from "../../theme";
+import { css, Theme } from "@emotion/react";
 
-export const styles = css`
+export const styles = (theme: Theme) => css`
   display: grid;
   grid-template-columns: min-content max-content;
   column-gap: 10px;
   margin: 200px auto 100px auto;
   text-align: center;
   justify-content: center;
-  font-family: ${theme.fontMain};
-  color: ${theme.two};
+  font-family: ${theme.font.main};
+  color: var(--colors-text);
 
   .avatarContainer {
     padding: 1px;
-    background: ${theme.one};
+    background: var(--colors-background);
     display: inline-block;
     border-radius: 100%;
-    background: linear-gradient(90deg, ${theme.two} 20%, ${theme.two} 50%);
+    background: linear-gradient(90deg, var(--colors-text) 20%, var(--colors-text) 50%);
   }
 
   .avatar {
@@ -34,7 +33,7 @@ export const styles = css`
     line-height: 28px;
 
     a {
-      color: ${theme.two};
+      color: var(--colors-text);
       text-decoration: underline dotted;
     }
   }

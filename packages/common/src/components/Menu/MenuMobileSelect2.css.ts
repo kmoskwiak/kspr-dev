@@ -1,7 +1,6 @@
-import { css } from '@emotion/react';
-import { theme } from '../../theme';
+import { css, Theme } from '@emotion/react';
 
-export const styles = css`
+export const styles = (theme: Theme) => css`
     display: block;
     position: relative;
 
@@ -63,8 +62,8 @@ export const styles = css`
             margin-bottom: 0.4rem;
             margin-right: 0.5rem;
             text-decoration: none;
-            font-family: ${theme.fontMain};
-            color: ${theme.two};
+            font-family: ${theme.font.main};
+            color: var(--colors-text);
         }
     }
 

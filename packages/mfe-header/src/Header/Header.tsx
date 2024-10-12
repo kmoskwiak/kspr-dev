@@ -21,8 +21,9 @@ type MenuResponse = {
 export const Header = () => {
 
   const [data] = useSSE<MenuItem[] | null>(() => {
-    return axios.get<MenuResponse>(API, {withCredentials: false}).then((res) => res?.data?.data?.items || null);
+    return axios.get<MenuResponse>(API, { withCredentials: false }).then((res) => res?.data?.data?.items || null);
   }, []);
+
 
   return (
     <Container marginTop="3rem" zIndex="999">

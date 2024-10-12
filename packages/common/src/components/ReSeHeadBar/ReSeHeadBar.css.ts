@@ -1,7 +1,6 @@
-import { css } from '@emotion/react';
-import { theme } from '../../theme';
+import { css, Theme } from '@emotion/react';
 
-export const styles = css`
+export const styles = (theme: Theme) => css`
   width: 100%;
   position: static;
   
@@ -22,9 +21,8 @@ export const styles = css`
     --header-shadow-negative-offset: -0.5px;
     
     font-family: monospace;
-    color: ${theme.purple};
-    //text-shadow: var(--header-shadow-offset) 0 var(--header-shadow-spread) ${theme.two}, 0 var(--header-shadow-offset) var(--header-shadow-spread) ${theme.two}, var(--header-shadow-negative-offset) 0 var(--header-shadow-spread) ${theme.two}, 0px var(--header-shadow-negative-offset) var(--header-shadow-spread) ${theme.two};
-    background: -webkit-linear-gradient(0deg, ${theme.blue}, ${theme.purple});
+    color: var(--colors-purple);
+    background: -webkit-linear-gradient(0deg, var(--colors-blue), var(--colors-purple));
     background-clip: text;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -40,6 +38,5 @@ export const styles = css`
   .menu {
     display: grid;
     align-items: stretch;
-    //grid-area: menu;
   }
 `;

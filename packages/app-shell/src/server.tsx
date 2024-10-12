@@ -1,3 +1,4 @@
+import { NotFoundError } from "@kspr-dev/common/errors";
 import express from "express";
 import fs from "fs";
 import morgan from "morgan";
@@ -40,11 +41,8 @@ app.use(morgan("combined"));
 
 app.use("/", async (req, res, next) => {
 
-  if (!["/", "/articles", "/projects", "/loading", "/re/se"].includes(req.path)) {
-    return next();
-  }
-
   let didError = false;
+  let responseStatusCode = 200;
 
   const stream = renderToPipeableStream(
     <StaticRouter location={req.url}>
@@ -52,7 +50,7 @@ app.use("/", async (req, res, next) => {
     </StaticRouter>,
     {
       onAllReady() {
-        res.statusCode = didError ? 500 : 200;
+        res.statusCode = responseStatusCode;
         res.setHeader("Content-type", "text/html");
         res.write(parts[0]);
         const helmet = Helmet.renderStatic();
@@ -78,7 +76,14 @@ app.use("/", async (req, res, next) => {
       },
       onError(err) {
         didError = true;
-        console.error(err);
+        responseStatusCode = 500;
+
+        if (err.name === NotFoundError.name) {
+          responseStatusCode = 404;
+          return;
+        }
+
+        console.error('Server onError', err);
       },
     }
   );

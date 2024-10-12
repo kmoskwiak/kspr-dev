@@ -4,6 +4,7 @@
     "description": "kspr.dev articles microfrontend",
     "author": "Kasper Moskwiak",
     "main": "./src/entry.tsx",
+    "type": "module",
     "scripts": {
         "build": "webpack --config=configs/webpack/prod.js",
         "build:server": "webpack --config=configs/webpack/server.js",

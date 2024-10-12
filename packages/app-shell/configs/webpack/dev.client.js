@@ -33,7 +33,8 @@ module.exports = merge(commonConfig, {
         kspr_dev_articles: "kspr_dev_articles@[kspr_dev_articlesUrl]/remoteEntry.js",
         kspr_dev_header: "kspr_dev_header@[kspr_dev_headerUrl]/remoteEntry.js",
         kspr_dev_projects: "kspr_dev_projects@[kspr_dev_projectsUrl]/remoteEntry.js",
-        kspr_dev_footer: "kspr_dev_footer@[kspr_dev_footerUrl]/remoteEntry.js"
+        kspr_dev_footer: "kspr_dev_footer@[kspr_dev_footerUrl]/remoteEntry.js",
+        kspr_dev_rese: "kspr_dev_rese@[kspr_dev_reseUrl]/remoteEntry.js"
       },
       shared: {
         react: {
@@ -49,7 +50,9 @@ module.exports = merge(commonConfig, {
           requiredVersion: common.dependencies['react-dom']
         },
         "react-router": {singleton: true, requiredVersion: common.dependencies['react-router']},
-        "react-router-dom": {singleton: true, requiredVersion: common.dependencies['react-router-dom']}
+        "react-router-dom": {singleton: true, requiredVersion: common.dependencies['react-router-dom']},
+        "@kspr-dev/common": { singleton: true, requiredVersion: common.dependencies['@kspr-dev/common']},
+        "@emotion/react": { singleton: true, requiredVersion: common.dependencies['@emotion/react']}
       }
     }),
     new HtmlWebpackPlugin({ 

@@ -30,6 +30,10 @@ const shared = {
     "@kspr-dev/use-sse": {
         singleton: true,
         requiredVersion: common.dependencies['@kspr-dev/use-sse']
+    },
+    "@kspr-dev/common": {
+        singleton: true,
+        requiredVersion: common.dependencies['@kspr-dev/common']
     }
 }
 

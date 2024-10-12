@@ -1,6 +1,6 @@
-import { styles } from './ProjectDetails.css';
-import { Card } from '../Card';
+import { useTheme } from '@emotion/react';
 import { Header } from '../Header';
+import { styles } from './ProjectDetails.css';
 
 interface ProjectDetailsProps {
   name: string;
@@ -23,9 +23,9 @@ export const ProjectDetails = ({
   href,
   ...props
 }: ProjectDetailsProps) => {
-
+  const theme = useTheme();
   return (
-    <div {...props} css={styles}>
+    <div {...props} css={styles(theme)}>
       <div className='container'>
         <div className="counter">{projectId}</div>
         <div className='content'>
