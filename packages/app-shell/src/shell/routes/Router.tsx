@@ -95,24 +95,6 @@ export const Router = () => {
           }
         />
         <Route
-          path="/404"
-          element={
-            <>
-              <div>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <Header />
-                </Suspense>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <h1>404</h1>
-                </Suspense>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <Footer />
-                </Suspense>
-              </div>
-            </>
-          }
-        />
-        <Route
           path="/:slug"
           element={
             <>

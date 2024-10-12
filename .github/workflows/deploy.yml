@@ -40,7 +40,7 @@ jobs:
           context: .
           push: true
           file: ./Dockerfile.mfs
-          tags: ghcr.io/kmoskwiak/kspr.dev-mfs:latest
+          tags: ghcr.io/kmoskwiak/kspr.dev-mfs:${{ github.sha }},ghcr.io/kmoskwiak/kspr.dev-mfs:latest
       - name: Build and push shell
         id: docker_build_shell
         uses: docker/build-push-action@v3
@@ -48,7 +48,7 @@ jobs:
           context: .
           push: true
           file: ./Dockerfile.shell
-          tags: ghcr.io/kmoskwiak/kspr.dev-shell:latest
+          tags: ghcr.io/kmoskwiak/kspr.dev-shell:${{ github.sha }},ghcr.io/kmoskwiak/kspr.dev-shell:latest
 
   deploy:
     needs: build
@@ -72,6 +72,8 @@ jobs:
         run: |
           helm upgrade kspr-dev ./helm/kspr-dev \
             --install \
+            --set SHELL_IMAGE="ghcr.io/kmoskwiak/kspr.dev-shell:${{ github.sha }}" \
+            --set MFS_IMAGE="ghcr.io/kmoskwiak/kspr.dev-mfs:${{ github.sha }}}" \
             --namespace ${{ vars.K8S_NAMESPACE }} \
             --create-namespace
             

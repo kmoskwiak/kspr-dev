@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: kspr-dev-shell-deployment
-          image: ghcr.io/kmoskwiak/kspr.dev-shell:latest
+          image: {{ .Values.SHELL_IMAGE }}
           imagePullPolicy: Always
           ports:
             - name: http

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: kspr-dev-mfs-deployment
-          image: ghcr.io/kmoskwiak/kspr.dev-mfs:latest
+          image: {{ .Values.MFS_IMAGE }}
           imagePullPolicy: Always
           ports:
             - name: http
