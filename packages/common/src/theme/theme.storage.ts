@@ -18,7 +18,7 @@ export const getCurrentThemeNameFromStorage = (): keyof typeof themeConfiguratio
 
 export const setCurrentThemeInStorage = (theme?: string) => {
     if (getWindow()?.document?.cookie) {
-        getWindow().document.cookie = `${THEME_STORE_KEY}=${theme}; path=/`;
+        getWindow().document.cookie = `${THEME_STORE_KEY}=${theme}; path=/; secure; samesite=strict`;
     }
     getWindow()?.document?.documentElement?.setAttribute('data-theme', theme);
 
