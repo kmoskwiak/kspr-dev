@@ -1,4 +1,6 @@
+import { Theme } from "@kspr-dev/common";
 import { NotFoundError } from "@kspr-dev/common/errors";
+import cookieParser from "cookie-parser";
 import express from "express";
 import fs from "fs";
 import morgan from "morgan";
@@ -31,6 +33,8 @@ const publicFiles = fs.readdirSync(path.resolve(__dirname, "../../dist/public"))
 const parts = pageRaw.split("<!-- break here -->");
 const app = express();
 
+app.use(cookieParser());
+
 publicFiles.forEach((file) => {
   app.use(`/${file}`, express.static(path.resolve(__dirname, `../../dist/public/${file}`)));
 });
@@ -40,16 +44,18 @@ app.use("/static", express.static(path.resolve(__dirname, "../../dist")));
 app.use(morgan("combined"));
 
 app.use("/", async (req, res, next) => {
-
   let didError = false;
   let responseStatusCode = 200;
 
   const stream = renderToPipeableStream(
     <StaticRouter location={req.url}>
-      <Router />
+      <Theme themeName={req.cookies.theme}>
+        <Router />
+      </Theme>
     </StaticRouter>,
     {
       onAllReady() {
+        res.cookie('theme', req.cookies.theme ?? 'dark', { maxAge: 900000, secure: true });
         res.statusCode = responseStatusCode;
         res.setHeader("Content-type", "text/html");
         res.write(parts[0]);

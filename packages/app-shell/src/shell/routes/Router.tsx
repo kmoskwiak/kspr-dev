@@ -1,4 +1,3 @@
-import { Theme } from "@kspr-dev/common/theme";
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 const Header = React.lazy(() => import("kspr_dev_header/Header"));
@@ -17,102 +16,100 @@ const LoadingSpinner = () => {
 
 export const Router = () => {
   return (
-    <Theme>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <div>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <Header />
-                </Suspense>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <LastArticle />
-                </Suspense>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <CurrentlyWorkingOn />
-                </Suspense>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <Footer />
-                </Suspense>
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/articles"
-          element={
-            <>
-              <div>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <Header />
-                </Suspense>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <Articles />
-                </Suspense>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <Footer />
-                </Suspense>
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/projects"
-          element={
-            <>
-              <div>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <Header />
-                </Suspense>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <Projects />
-                </Suspense>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <Footer />
-                </Suspense>
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/re/se/*"
-          element={
-            <>
-              <div>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <ReSeHeader />
-                </Suspense>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <ResearchTopics />
-                </Suspense>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <Footer />
-                </Suspense>
-              </div>
-            </>
-          }
-        />
-        <Route
-          path="/:slug"
-          element={
-            <>
-              <div>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <Header />
-                </Suspense>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <SingleArticle />
-                </Suspense>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <Footer />
-                </Suspense>
-              </div>
-            </>
-          }
-        />
-      </Routes>
-    </Theme>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <>
+            <div>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Header />
+              </Suspense>
+              <Suspense fallback={<LoadingSpinner />}>
+                <LastArticle />
+              </Suspense>
+              <Suspense fallback={<LoadingSpinner />}>
+                <CurrentlyWorkingOn />
+              </Suspense>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Footer />
+              </Suspense>
+            </div>
+          </>
+        }
+      />
+      <Route
+        path="/articles"
+        element={
+          <>
+            <div>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Header />
+              </Suspense>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Articles />
+              </Suspense>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Footer />
+              </Suspense>
+            </div>
+          </>
+        }
+      />
+      <Route
+        path="/projects"
+        element={
+          <>
+            <div>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Header />
+              </Suspense>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Projects />
+              </Suspense>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Footer />
+              </Suspense>
+            </div>
+          </>
+        }
+      />
+      <Route
+        path="/re/se/*"
+        element={
+          <>
+            <div>
+              <Suspense fallback={<LoadingSpinner />}>
+                <ReSeHeader />
+              </Suspense>
+              <Suspense fallback={<LoadingSpinner />}>
+                <ResearchTopics />
+              </Suspense>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Footer />
+              </Suspense>
+            </div>
+          </>
+        }
+      />
+      <Route
+        path="/:slug"
+        element={
+          <>
+            <div>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Header />
+              </Suspense>
+              <Suspense fallback={<LoadingSpinner />}>
+                <SingleArticle />
+              </Suspense>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Footer />
+              </Suspense>
+            </div>
+          </>
+        }
+      />
+    </Routes>
   );
 };

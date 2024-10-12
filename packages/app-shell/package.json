@@ -18,7 +18,8 @@
     },
     "dependencies": {
         "@emotion/server": "^11.11.0",
-        "@kspr-dev/common": "*"
+        "@kspr-dev/common": "*",
+        "cookie-parser": "^1.4.7"
     },
     "devDependencies": {
         "express": "^4.19.2",

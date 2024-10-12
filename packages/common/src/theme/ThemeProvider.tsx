@@ -16,8 +16,8 @@ export const ThemeToggleContext = createContext({
     currentTheme: DEFAULT_THEME,
 });
 
-export const ThemeToggleProvider = ({ children, theme }: { children?: ReactNode, theme?: ThemeType }) => {
-    const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>(theme?.name ?? getCurrentThemeNameFromStorage());
+export const ThemeToggleProvider = ({ children, theme, themeName }: { children?: ReactNode, theme?: ThemeType, themeName?: 'light' | 'dark' }) => {
+    const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>(themeName ?? theme?.name ?? getCurrentThemeNameFromStorage());
     const [currentThemeValue, setCurrentThemeValue] = useState(themeConfiguration[currentTheme]);
 
     useEffect(() => {
@@ -57,9 +57,9 @@ export const ThemeToggleProvider = ({ children, theme }: { children?: ReactNode,
     )
 }
 
-export const Theme = ({ children }: { children: ReactNode }) => {
+export const Theme = ({ children, themeName }: { children: ReactNode, themeName?: 'light' | 'dark' }) => {
     return (
-        <ThemeToggleProvider>
+        <ThemeToggleProvider themeName={themeName}>
             {children}
         </ThemeToggleProvider>
     )
