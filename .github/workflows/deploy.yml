@@ -73,7 +73,7 @@ jobs:
           helm upgrade kspr-dev ./helm/kspr-dev \
             --install \
             --set SHELL_IMAGE="ghcr.io/kmoskwiak/kspr.dev-shell:${{ github.sha }}" \
-            --set MFS_IMAGE="ghcr.io/kmoskwiak/kspr.dev-mfs:${{ github.sha }}}" \
+            --set MFS_IMAGE="ghcr.io/kmoskwiak/kspr.dev-mfs:${{ github.sha }}" \
             --namespace ${{ vars.K8S_NAMESPACE }} \
             --create-namespace
             

@@ -1,5 +1,7 @@
 FROM node:alpine as build
 
+LABEL org.opencontainers.image.source https://github.com/kmoskwiak/kspr-dev
+
 WORKDIR /app
 
 COPY . /app/
