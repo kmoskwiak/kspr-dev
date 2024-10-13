@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import CategoryPage from "../CategoryPage";
-import { ResearchTopics } from "./ResearchTopics";
+import CategoryPage from "../CategoryPage/index.tsx";
+import { ResearchTopics } from "./ResearchTopics.tsx";
 
 const LoadingSpinner = () => {
     return <div>Loading...</div>;

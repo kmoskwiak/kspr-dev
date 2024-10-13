@@ -13,12 +13,12 @@ export const style = css`
     }
 
     .ResearchTopics_header-container {
+        padding: 2rem;
         display: flex;
-        justify-content: center;
     }
 
     .ResearchTopics_topics-container {
-        margin-top: 10rem;
+        margin-top: 15rem;
     }
 
     .DynamicIcon_container {

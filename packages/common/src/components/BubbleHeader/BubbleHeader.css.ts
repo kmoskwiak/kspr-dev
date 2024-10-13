@@ -3,36 +3,16 @@ import { css, Theme } from '@emotion/react';
 export const styles = (theme: Theme) => css`
   display: inline-block;
   position: relative;
-  margin: 150px 180px 100px 100px;
 
-  .bubble {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    width: 0;
-    height: 0;
+  .description {
+    font-family: ${theme.font.main};
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--colors-text);
+    margin: 2rem 0;
+    padding: 0;
+    opacity: 0.7;
   }
-
-  .top {
-    top: -145px;
-    right: 20px;
-    z-index: 0;
-  }
-
-  .bottom {
-    bottom: 20px;
-    left: -90px;
-    z-index: 0;
-  }
-
-  @keyframes slideInFromBottom {
-  0% {
-    transform: translateY(100%) translateX(-100%);
-  }
-  100% {
-    transform: translateY(0) translateY(0);
-  }
-}
 
   .icon {
     z-index: 10;
@@ -44,14 +24,14 @@ export const styles = (theme: Theme) => css`
     animation: 1s ease-out 0s 1 slideInFromBottom;
   }
 
-  h2 {
+  h1, h2 {
     --header-shadow-spread: 1px;
     --header-shadow-offset: 0.5px;
     --header-shadow-negative-offset: -0.5px;
-
+    font-size: 2.8rem;
     margin: 0;
     padding: 0;
-    font-weight: 400;
+    font-weight: 600;
 
     &.font-style-sans-serif {
       font-family: ${theme.font.main};

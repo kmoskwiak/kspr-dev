@@ -3,8 +3,8 @@ import { BubbleHeader } from "@kspr-dev/common/components/BubbleHeader";
 import { Container } from "@kspr-dev/common/components/Container";
 import { TopicCard } from "@kspr-dev/common/components/TopicCard";
 import { useSSE } from "@kspr-dev/use-sse";
-import { CategoryItem } from './ResearchTopic.type';
-import { style } from "./ResearchTopics.css";
+import { CategoryItem } from './ResearchTopic.type.ts';
+import { style } from "./ResearchTopics.css.ts";
 
 const API = "https://cms.kspr.dev/items/Category";
 const getAssetUrl = (id: string) => `https://cms.kspr.dev/assets/${id}`;
@@ -37,7 +37,7 @@ export const ResearchTopics = () => {
     <div css={style}>
       <Container marginTop='5rem'>
         <div className='ResearchTopics_header-container'>
-          <BubbleHeader icon={getAssetUrl(reSeCategory.icon)}>{reSeCategory.name}</BubbleHeader>
+          <BubbleHeader header={reSeCategory.name} description={reSeCategory.description} />
         </div>
 
         <div className='ResearchTopics_topics-container'>

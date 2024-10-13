@@ -1,14 +1,10 @@
 import { useTheme } from '@emotion/react';
-import React from 'react';
-import { ConicGradient } from '../ConicGradient';
 import { Header } from '../Header';
 import { styles } from './BubbleHeader.css';
 
 interface BubbleHeaderProps {
-  /**
-   * Text of header
-   */
-  children: React.ReactNode;
+  header?: string;
+  description?: string;
   outline?: boolean;
   font?: 'mono' | 'sans-serif';
   icon?: string;
@@ -18,7 +14,8 @@ interface BubbleHeaderProps {
  * Primary UI component for user interaction
  */
 export const BubbleHeader = ({
-  children,
+  header,
+  description,
   font,
   outline,
   ...props
@@ -28,13 +25,8 @@ export const BubbleHeader = ({
   return (
     <div css={styles(theme)}>
       {props.icon && <img className='icon' src={props.icon} crossOrigin='anonymous' />}
-      <div className='bubble top'>
-        <ConicGradient size={'200px'} color='#4200FF' />
-      </div>
-      <div className='bubble bottom'>
-        <ConicGradient size={'100px'} rotation={180} color='#4200FF' />
-      </div>
-      <Header font={font} outline={outline}>{children}</Header>
+      <Header font={font} outline={outline}>{header}</Header>
+      <p className='description'>{description}</p>
     </div>
   );
 };

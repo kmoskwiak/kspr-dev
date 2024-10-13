@@ -2,11 +2,10 @@ import { createDirectus, readItem, readItems, rest } from '@directus/sdk';
 import { ArticleCard } from "@kspr-dev/common/components/ArticleCard";
 import { BubbleHeader } from "@kspr-dev/common/components/BubbleHeader";
 import { Container } from "@kspr-dev/common/components/Container";
-import { TopicCard } from "@kspr-dev/common/components/TopicCard";
 import { useSSE } from "@kspr-dev/use-sse";
 import { useParams } from "react-router-dom";
-import { style } from "./CategoryPage.css";
-import { CategoryItem, PostResponse } from './CategoryPage.type';
+import { style } from "./CategoryPage.css.ts";
+import { CategoryItem, PostResponse } from './CategoryPage.type.ts';
 
 
 
@@ -42,17 +41,7 @@ export const CategoryPage = () => {
     <div css={style}>
       <Container marginTop='5rem'>
         <div className='ResearchTopics_header-container'>
-          <BubbleHeader icon={getAssetUrl(category.icon)}>{category.name}</BubbleHeader>
-        </div>
-
-        <div className='ResearchTopics_topics-container'>
-          <TopicCard
-            name={category.name}
-            description={category.description}
-            projectId={''}
-            image={getAssetUrl(category.cover)}
-            href={`/${slug}/${category.slug}`}
-          ></TopicCard>
+          <BubbleHeader header={category.name} description={category.description} />
         </div>
         <div>
           {articles && articles.map((article, index) => (

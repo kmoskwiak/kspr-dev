@@ -23,14 +23,16 @@ type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
   args: {
-    children: 'Research topics',
+    header: 'Research topics',
+    description: 'A list of topics that are currently being researched',
     font: 'sans-serif',
   },
 };
 
 export const MonoOutline: Story = {
   args: {
-    children: 'Research topics',
+    header: 'Research topics',
+    description: 'A list of topics that are currently being researched',
     outline: true,
     font: 'mono',
   },
