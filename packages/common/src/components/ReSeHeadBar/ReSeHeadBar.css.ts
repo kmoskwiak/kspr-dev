@@ -2,7 +2,7 @@ import { css, Theme } from '@emotion/react';
 
 export const styles = (theme: Theme) => css`
   width: 100%;
-  position: static;
+  position: relative;
   
   .container {
     display: grid;
@@ -10,9 +10,13 @@ export const styles = (theme: Theme) => css`
     grid-template-rows: 1fr;
     gap: 3rem;
     align-items: center;
+    align-content: center;
     justify-content: space-between;
     align-items: stretch;
-    position: relative;
+  
+    @media (min-width: 300px) { 
+      grid-template-columns: max-content min-content min-content;
+    }
   }
 
   .logo {
@@ -31,6 +35,7 @@ export const styles = (theme: Theme) => css`
 
     font-weight: 100;
     font-size: 2rem;
+    line-height: 3rem;
     display: inline-block;
     text-decoration: none;
   }
@@ -38,5 +43,15 @@ export const styles = (theme: Theme) => css`
   .menu {
     display: grid;
     align-items: stretch;
+  }
+
+  .theme-button-container {
+    display: none;
+    grid-auto-flow: column;
+    align-items: center;
+
+    @media (min-width: 300px) { 
+      display: grid;
+    }
   }
 `;
