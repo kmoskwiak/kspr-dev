@@ -1,10 +1,9 @@
-const { resolve } = require("path");
-const webpackConfig = require('@kspr-dev/common/webpack/config')
+import webpackConfig from '@kspr-dev/common/webpack/config';
+import { resolve } from "path";
 
-
-module.exports = webpackConfig({
+export default  webpackConfig({
   mode: "production",
-  context: resolve(__dirname, "../../"),
+  context: resolve(import.meta.dirname, "../../"),
   envType: "client",
   moduleName: "kspr_dev_rese",
   moduleExposes: {
